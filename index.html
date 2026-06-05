@@ -1,14 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>klar-site-8</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-  </head>
-  <body>
-    <h1>klar-site-8</h1>
-    <p>Edit this page with Klar.</p>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inkwell — Thoughts on Design, Code &amp; Craft</title>
+  <meta name="description" content="A modern blog exploring web development, design systems, creative tooling, and the intersection of technology and human experience.">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- ====================================================================
+       HEADER
+       ==================================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        Inkwell
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="post.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" aria-label="Toggle theme" type="button">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="post.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ==================================================================
+         HERO
+         ================================================================== -->
+    <section class="section py-16 lg:py-24">
+      <div class="container">
+        <div class="hero">
+          <div class="hero__eyebrow">
+            <span class="badge badge-primary">Welcome to Inkwell</span>
+          </div>
+          <h1 class="hero__title">Thoughts on design, code, and the craft of building for the web</h1>
+          <p class="hero__description">Exploring modern web development, design systems, creative tooling, and the intersection of technology and human experience.</p>
+          <div class="hero__actions">
+            <a href="post.html" class="btn btn-primary btn-lg">Start Reading</a>
+            <a href="contact.html" class="btn btn-outline btn-lg">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         FEATURED POST
+         ================================================================== -->
+    <section class="section py-12 lg:py-16">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-header__title">Featured Article</h2>
+          <p class="section-header__description">Our latest deep dive into the world of web development.</p>
+        </div>
+        <a href="post.html" class="featured-card">
+          <img class="featured-card__image" src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=500&fit=crop" alt="Lines of code glowing on a dark monitor" loading="lazy">
+          <div class="featured-card__content">
+            <span class="badge badge-primary">Featured</span>
+            <h2 class="featured-card__title">The Future of Web Development</h2>
+            <p class="featured-card__excerpt">Exploring how modern tooling, AI assistance, and design systems are reshaping how we build for the web — and what it means for developers in the next decade.</p>
+            <div class="author-block">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Alex Rivera" class="avatar avatar-sm" loading="lazy">
+              <div class="author-block__info">
+                <span class="author-block__name">Alex Rivera</span>
+                <span class="author-block__detail">Mar 20, 2025 · 8 min read</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         LATEST POSTS GRID
+         ================================================================== -->
+    <section class="section py-12 lg:py-16">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-header__title">Latest Articles</h2>
+          <p class="section-header__description">Fresh perspectives on design, development, and productivity.</p>
+        </div>
+        <div class="post-grid">
+          <!-- Card 1 -->
+          <a href="post.html" class="card card--link">
+            <img class="card__image" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=340&fit=crop" alt="Laptop open on a wooden desk with a cup of coffee nearby" loading="lazy">
+            <div class="card__body">
+              <div class="mb-2"><span class="badge badge-primary">Design</span></div>
+              <h3 class="card__title">Building Better User Interfaces</h3>
+              <p class="card__excerpt">Learn the principles behind intuitive, accessible interfaces that users actually enjoy using every day.</p>
+            </div>
+            <div class="card__footer">
+              <span class="card__meta">Mar 15, 2025</span>
+              <span class="card__meta">5 min read</span>
+            </div>
+          </a>
+
+          <!-- Card 2 -->
+          <a href="post.html" class="card card--link">
+            <img class="card__image" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=340&fit=crop" alt="Close-up of JavaScript code on a screen" loading="lazy">
+            <div class="card__body">
+              <div class="mb-2"><span class="badge badge-secondary">Development</span></div>
+              <h3 class="card__title">CSS Custom Properties Deep Dive</h3>
+              <p class="card__excerpt">How to architect a token-based styling system using nothing but native CSS variables and semantic naming.</p>
+            </div>
+            <div class="card__footer">
+              <span class="card__meta">Mar 10, 2025</span>
+              <span class="card__meta">7 min read</span>
+            </div>
+          </a>
+
+          <!-- Card 3 -->
+          <a href="post.html" class="card card--link">
+            <img class="card__image" src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=340&fit=crop" alt="Notebook with a to-do list and a pen" loading="lazy">
+            <div class="card__body">
+              <div class="mb-2"><span class="badge badge-outline">Productivity</span></div>
+              <h3 class="card__title">The Art of Focused Work</h3>
+              <p class="card__excerpt">Strategies for deep work in an age of constant distraction — from time-boxing to digital minimalism.</p>
+            </div>
+            <div class="card__footer">
+              <span class="card__meta">Mar 5, 2025</span>
+              <span class="card__meta">4 min read</span>
+            </div>
+          </a>
+
+          <!-- Card 4 -->
+          <a href="post.html" class="card card--link">
+            <img class="card__image" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=340&fit=crop" alt="Person typing on a laptop keyboard" loading="lazy">
+            <div class="card__body">
+              <div class="mb-2"><span class="badge badge-primary">Engineering</span></div>
+              <h3 class="card__title">Vanilla JS Is Enough</h3>
+              <p class="card__excerpt">Why reaching for a framework isn't always the answer — and how the platform has caught up to most use cases.</p>
+            </div>
+            <div class="card__footer">
+              <span class="card__meta">Feb 28, 2025</span>
+              <span class="card__meta">6 min read</span>
+            </div>
+          </a>
+
+          <!-- Card 5 -->
+          <a href="post.html" class="card card--link">
+            <img class="card__image" src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=600&h=340&fit=crop" alt="Design wireframes spread across a table" loading="lazy">
+            <div class="card__body">
+              <div class="mb-2"><span class="badge badge-secondary">Design Systems</span></div>
+              <h3 class="card__title">Tokens, Components, Sections</h3>
+              <p class="card__excerpt">A practical guide to structuring a design system that scales from a single page to an entire product.</p>
+            </div>
+            <div class="card__footer">
+              <span class="card__meta">Feb 22, 2025</span>
+              <span class="card__meta">9 min read</span>
+            </div>
+          </a>
+
+          <!-- Card 6 -->
+          <a href="post.html" class="card card--link">
+            <img class="card__image" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=340&fit=crop" alt="Team working together at a large desk with laptops" loading="lazy">
+            <div class="card__body">
+              <div class="mb-2"><span class="badge badge-outline">Culture</span></div>
+              <h3 class="card__title">Remote Work and Creative Flow</h3>
+              <p class="card__excerpt">How distributed teams can maintain creative momentum, build culture, and ship great work from anywhere.</p>
+            </div>
+            <div class="card__footer">
+              <span class="card__meta">Feb 18, 2025</span>
+              <span class="card__meta">5 min read</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         NEWSLETTER CTA
+         ================================================================== -->
+    <section class="section py-12 lg:py-16">
+      <div class="container">
+        <div class="cta-block">
+          <h2 class="cta-block__title">Stay in the loop</h2>
+          <p class="cta-block__description">Get the latest articles delivered straight to your inbox. No spam, unsubscribe anytime.</p>
+          <form class="cta-block__form" id="newsletter-form" action="#newsletter" method="post">
+            <input type="email" class="input" placeholder="you@example.com" aria-label="Email address" required>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       FOOTER
+       ==================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="brand">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+            Inkwell
+          </a>
+          <p class="footer-brand__description">A blog about design, development, and the craft of building thoughtful digital experiences.</p>
+        </div>
+        <div>
+          <h4 class="footer-column__title">Pages</h4>
+          <ul class="footer-column__list">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="post.html" class="footer-link">Blog</a></li>
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-column__title">Connect</h4>
+          <ul class="footer-column__list">
+            <li><a href="#" class="footer-link">Twitter</a></li>
+            <li><a href="#" class="footer-link">GitHub</a></li>
+            <li><a href="#" class="footer-link">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 Inkwell. All rights reserved.</span>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-link" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
