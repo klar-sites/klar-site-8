@@ -1,302 +1,250 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nordisk Klinikhälsa · Privat specialistklinik i Stockholm</title>
-  <meta name="description" content="Nordisk Klinikhälsa erbjuder trygg, personlig och premium specialistvård i Stockholm. Boka konsultation för hudhälsa, medicinsk rådgivning och uppföljning." />
-  <link rel="canonical" href="index.html" />
-  <link rel="stylesheet" href="/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inkwell — Thoughts on Design, Code &amp; Craft</title>
+  <meta name="description" content="A modern blog exploring web development, design systems, creative tooling, and the intersection of technology and human experience.">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+
+  <!-- ====================================================================
+       HEADER
+       ==================================================================== -->
   <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Nordisk Klinikhälsa startsida">
-        <span class="brand-mark" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span class="brand-text">
-          <span class="brand-name">Nordisk Klinikhälsa</span>
-          <span class="brand-subtitle">Specialistklinik</span>
-        </span>
+    <div class="container">
+      <a href="index.html" class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        Inkwell
       </a>
-
-      <nav class="site-nav" aria-label="Huvudmeny">
-        <a class="nav-link" href="index.html" aria-current="page">Start</a>
-        <a class="nav-link" href="behandling.html">Behandling</a>
-        <a class="nav-link" href="kontakt.html">Kontakt</a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="post.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
       </nav>
-
       <div class="header-actions">
-        <a class="btn btn-primary btn-sm" href="kontakt.html">Boka tid</a>
-        <button class="theme-toggle" type="button" aria-label="Toggle theme">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          </svg>
+        <button class="theme-toggle" aria-label="Toggle theme" type="button">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-        <button class="mobile-toggle" type="button" aria-label="Öppna meny" aria-expanded="false">
-          <span class="mobile-toggle__bars" aria-hidden="true"></span>
+        <button class="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
       </div>
     </div>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="post.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-content reveal">
-          <span class="eyebrow">Privat specialistklinik i Stockholm</span>
-          <h1>Trygg vård med personlig plan och premiumkänsla</h1>
-          <p class="lead">Hos Nordisk Klinikhälsa får du medicinsk rådgivning, behandling och uppföljning i en lugn miljö där varje beslut förklaras tydligt.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary btn-lg" href="kontakt.html">Boka konsultation</a>
-            <a class="btn btn-outline btn-lg" href="behandling.html">Utforska behandlingar</a>
-          </div>
-          <div class="stat-grid">
-            <div class="stat">
-              <span class="stat__value">15+</span>
-              <span class="stat__label">års samlad klinisk erfarenhet</span>
-            </div>
-            <div class="stat">
-              <span class="stat__value">24 h</span>
-              <span class="stat__label">normal svarstid på förfrågningar</span>
-            </div>
-            <div class="stat">
-              <span class="stat__value">100%</span>
-              <span class="stat__label">individuella behandlingsplaner</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-media reveal">
-          <div class="hero-card">
-            <img class="hero-image" src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=1200&q=80" alt="Läkare samtalar med patient i en modern och ljus klinikmiljö" />
-            <div class="hero-note">
-              <strong>Individuell bedömning</strong>
-              <span>Alltid av legitimerad behandlare med tydlig plan och uppföljning.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section bg-secondary">
-      <div class="container split">
-        <div class="media-card reveal">
-          <img class="media-image aspect-video object-cover" src="https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=1000&q=80" alt="Skandinaviskt behandlingsrum med varm belysning" />
-        </div>
-        <div class="stack reveal">
-          <span class="eyebrow">Om kliniken</span>
-          <h2>Modern klinik med fokus på tillit, kvalitet och kontinuitet</h2>
-          <p class="lead">Vi kombinerar evidensbaserad vård med ett varmt bemötande och en tydlig process från första kontakt till uppföljning.</p>
-          <ul class="feature-list">
-            <li>Legitimerade behandlare, strukturerad journalföring och medicinskt ansvar i varje steg.</li>
-            <li>Diskreta, rofyllda lokaler centralt i Stockholm med hög integritet.</li>
-            <li>Rådgivning som utgår från dina behov, din historik och långsiktiga hälsa.</li>
-          </ul>
-          <div class="cluster">
-            <a class="btn btn-primary" href="kontakt.html">Boka första samtal</a>
-            <a class="cta-link" href="behandling.html">Läs om vår process →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
+    <!-- ==================================================================
+         HERO
+         ================================================================== -->
+    <section class="section py-16 lg:py-24">
       <div class="container">
-        <div class="section-header section-header--center mb-8 reveal">
-          <span class="eyebrow">Behandlingar</span>
-          <h2>Vård och behandlingar för långsiktig hälsa</h2>
-          <p>Våra tjänster börjar med en noggrann konsultation och avslutas med tydliga råd för resultat som håller över tid.</p>
-        </div>
-
-        <div class="grid md:grid-cols-3">
-          <article class="card service-card reveal">
-            <div class="card__header">
-              <span class="card__icon" aria-hidden="true">01</span>
-              <h3 class="card__title">Hudkonsultation</h3>
-            </div>
-            <div class="card__body">
-              <p>Medicinsk analys, behandlingsplan och rådgivning för hudhälsa, känslighet och förebyggande rutiner.</p>
-              <ul class="feature-list">
-                <li>Individuell bedömning</li>
-                <li>Plan med tydliga prioriteringar</li>
-              </ul>
-            </div>
-            <div class="card__footer">
-              <a class="cta-link" href="behandling.html">Läs mer →</a>
-            </div>
-          </article>
-
-          <article class="card service-card reveal">
-            <div class="card__header">
-              <span class="card__icon" aria-hidden="true">02</span>
-              <h3 class="card__title">Medicinsk rådgivning</h3>
-            </div>
-            <div class="card__body">
-              <p>Trygg vägledning inför behandling, egenvård eller uppföljning när du vill fatta informerade beslut.</p>
-              <ul class="feature-list">
-                <li>Legitimerad personal</li>
-                <li>Realistiska rekommendationer</li>
-              </ul>
-            </div>
-            <div class="card__footer">
-              <a class="cta-link" href="behandling.html">Se upplägg →</a>
-            </div>
-          </article>
-
-          <article class="card service-card reveal">
-            <div class="card__header">
-              <span class="card__icon" aria-hidden="true">03</span>
-              <h3 class="card__title">Återbesök och uppföljning</h3>
-            </div>
-            <div class="card__body">
-              <p>Uppföljning av resultat, justering av plan och fortsatt stöd för att skapa stabil utveckling över tid.</p>
-              <ul class="feature-list">
-                <li>Kontinuitet i vården</li>
-                <li>Råd efter varje besök</li>
-              </ul>
-            </div>
-            <div class="card__footer">
-              <a class="cta-link" href="kontakt.html">Boka uppföljning →</a>
-            </div>
-          </article>
+        <div class="hero">
+          <div class="hero__eyebrow">
+            <span class="badge badge-primary">Welcome to Inkwell</span>
+          </div>
+          <h1 class="hero__title">Thoughts on design, code, and the craft of building for the web</h1>
+          <p class="hero__description">Exploring modern web development, design systems, creative tooling, and the intersection of technology and human experience.</p>
+          <div class="hero__actions">
+            <a href="post.html" class="btn btn-primary btn-lg">Start Reading</a>
+            <a href="contact.html" class="btn btn-outline btn-lg">Get in Touch</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section bg-muted">
-      <div class="container split">
-        <div class="section-header reveal">
-          <span class="eyebrow">Varför välja oss</span>
-          <h2>Medicinsk trygghet möter skandinavisk omtanke</h2>
-          <p>Vi arbetar transparent, noggrant och med respekt för varje patients integritet. Vår uppgift är att hjälpa dig förstå alternativen, inte att stressa fram beslut.</p>
-        </div>
-
-        <div class="grid gap-4">
-          <article class="card p-6 reveal">
-            <span class="badge badge-primary mb-4">01 · Trygghet</span>
-            <h3 class="mb-2">Tydlig information före behandling</h3>
-            <p>Du får veta vad som rekommenderas, varför det rekommenderas och vilka alternativ som finns.</p>
-          </article>
-          <article class="card p-6 reveal">
-            <span class="badge badge-primary mb-4">02 · Kvalitet</span>
-            <h3 class="mb-2">Strukturerade rutiner och uppföljning</h3>
-            <p>Vi dokumenterar, följer upp och anpassar planen när dina behov förändras.</p>
-          </article>
-          <article class="card p-6 reveal">
-            <span class="badge badge-primary mb-4">03 · Integritet</span>
-            <h3 class="mb-2">Diskret miljö med personlig service</h3>
-            <p>Våra lokaler och processer är utformade för lugn, sekretess och ett professionellt bemötande.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
+    <!-- ==================================================================
+         FEATURED POST
+         ================================================================== -->
+    <section class="section py-12 lg:py-16">
       <div class="container">
-        <div class="section-header section-header--center mb-8 reveal">
-          <span class="eyebrow">Patientröster</span>
-          <h2>Förtroende skapas i varje möte</h2>
-          <p>Patienternas upplevelse är central för hur vi utvecklar vår klinik, våra rutiner och vårt bemötande.</p>
+        <div class="section-header">
+          <h2 class="section-header__title">Featured Article</h2>
+          <p class="section-header__description">Our latest deep dive into the world of web development.</p>
         </div>
-
-        <div class="grid md:grid-cols-3">
-          <article class="testimonial reveal">
-            <blockquote>“Professionellt, lugnt och väldigt tydligt. Jag visste exakt vad som skulle hända och kände mig trygg genom hela besöket.”</blockquote>
-            <div class="testimonial__author">
-              <span class="avatar" aria-hidden="true">EK</span>
-              <div>
-                <strong>Erik K.</strong>
-                <p class="text-sm">Patient, Stockholm</p>
+        <a href="post.html" class="featured-card">
+          <img class="featured-card__image" src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=500&fit=crop" alt="Lines of code glowing on a dark monitor" loading="lazy">
+          <div class="featured-card__content">
+            <span class="badge badge-primary">Featured</span>
+            <h2 class="featured-card__title">The Future of Web Development</h2>
+            <p class="featured-card__excerpt">Exploring how modern tooling, AI assistance, and design systems are reshaping how we build for the web — and what it means for developers in the next decade.</p>
+            <div class="author-block">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Alex Rivera" class="avatar avatar-sm" loading="lazy">
+              <div class="author-block__info">
+                <span class="author-block__name">Alex Rivera</span>
+                <span class="author-block__detail">Mar 20, 2025 · 8 min read</span>
               </div>
             </div>
-          </article>
+          </div>
+        </a>
+      </div>
+    </section>
 
-          <article class="testimonial reveal">
-            <blockquote>“Kliniken känns exklusiv utan att vara opersonlig. Jag fick ett varmt bemötande och en plan som var lätt att följa.”</blockquote>
-            <div class="testimonial__author">
-              <span class="avatar" aria-hidden="true">MS</span>
-              <div>
-                <strong>Maria S.</strong>
-                <p class="text-sm">Patient, Nacka</p>
-              </div>
+    <!-- ==================================================================
+         LATEST POSTS GRID
+         ================================================================== -->
+    <section class="section py-12 lg:py-16">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-header__title">Latest Articles</h2>
+          <p class="section-header__description">Fresh perspectives on design, development, and productivity.</p>
+        </div>
+        <div class="post-grid">
+          <!-- Card 1 -->
+          <a href="post.html" class="card card--link">
+            <img class="card__image" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=340&fit=crop" alt="Laptop open on a wooden desk with a cup of coffee nearby" loading="lazy">
+            <div class="card__body">
+              <div class="mb-2"><span class="badge badge-primary">Design</span></div>
+              <h3 class="card__title">Building Better User Interfaces</h3>
+              <p class="card__excerpt">Learn the principles behind intuitive, accessible interfaces that users actually enjoy using every day.</p>
             </div>
-          </article>
+            <div class="card__footer">
+              <span class="card__meta">Mar 15, 2025</span>
+              <span class="card__meta">5 min read</span>
+            </div>
+          </a>
 
-          <article class="testimonial reveal">
-            <blockquote>“Jag uppskattade uppföljningen och att behandlaren tog sig tid att justera rekommendationerna efter mina behov.”</blockquote>
-            <div class="testimonial__author">
-              <span class="avatar" aria-hidden="true">JN</span>
-              <div>
-                <strong>Jonas N.</strong>
-                <p class="text-sm">Patient, Solna</p>
-              </div>
+          <!-- Card 2 -->
+          <a href="post.html" class="card card--link">
+            <img class="card__image" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=340&fit=crop" alt="Close-up of JavaScript code on a screen" loading="lazy">
+            <div class="card__body">
+              <div class="mb-2"><span class="badge badge-secondary">Development</span></div>
+              <h3 class="card__title">CSS Custom Properties Deep Dive</h3>
+              <p class="card__excerpt">How to architect a token-based styling system using nothing but native CSS variables and semantic naming.</p>
             </div>
-          </article>
+            <div class="card__footer">
+              <span class="card__meta">Mar 10, 2025</span>
+              <span class="card__meta">7 min read</span>
+            </div>
+          </a>
+
+          <!-- Card 3 -->
+          <a href="post.html" class="card card--link">
+            <img class="card__image" src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=340&fit=crop" alt="Notebook with a to-do list and a pen" loading="lazy">
+            <div class="card__body">
+              <div class="mb-2"><span class="badge badge-outline">Productivity</span></div>
+              <h3 class="card__title">The Art of Focused Work</h3>
+              <p class="card__excerpt">Strategies for deep work in an age of constant distraction — from time-boxing to digital minimalism.</p>
+            </div>
+            <div class="card__footer">
+              <span class="card__meta">Mar 5, 2025</span>
+              <span class="card__meta">4 min read</span>
+            </div>
+          </a>
+
+          <!-- Card 4 -->
+          <a href="post.html" class="card card--link">
+            <img class="card__image" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=340&fit=crop" alt="Person typing on a laptop keyboard" loading="lazy">
+            <div class="card__body">
+              <div class="mb-2"><span class="badge badge-primary">Engineering</span></div>
+              <h3 class="card__title">Vanilla JS Is Enough</h3>
+              <p class="card__excerpt">Why reaching for a framework isn't always the answer — and how the platform has caught up to most use cases.</p>
+            </div>
+            <div class="card__footer">
+              <span class="card__meta">Feb 28, 2025</span>
+              <span class="card__meta">6 min read</span>
+            </div>
+          </a>
+
+          <!-- Card 5 -->
+          <a href="post.html" class="card card--link">
+            <img class="card__image" src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=600&h=340&fit=crop" alt="Design wireframes spread across a table" loading="lazy">
+            <div class="card__body">
+              <div class="mb-2"><span class="badge badge-secondary">Design Systems</span></div>
+              <h3 class="card__title">Tokens, Components, Sections</h3>
+              <p class="card__excerpt">A practical guide to structuring a design system that scales from a single page to an entire product.</p>
+            </div>
+            <div class="card__footer">
+              <span class="card__meta">Feb 22, 2025</span>
+              <span class="card__meta">9 min read</span>
+            </div>
+          </a>
+
+          <!-- Card 6 -->
+          <a href="post.html" class="card card--link">
+            <img class="card__image" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=340&fit=crop" alt="Team working together at a large desk with laptops" loading="lazy">
+            <div class="card__body">
+              <div class="mb-2"><span class="badge badge-outline">Culture</span></div>
+              <h3 class="card__title">Remote Work and Creative Flow</h3>
+              <p class="card__excerpt">How distributed teams can maintain creative momentum, build culture, and ship great work from anywhere.</p>
+            </div>
+            <div class="card__footer">
+              <span class="card__meta">Feb 18, 2025</span>
+              <span class="card__meta">5 min read</span>
+            </div>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- ==================================================================
+         NEWSLETTER CTA
+         ================================================================== -->
+    <section class="section py-12 lg:py-16">
       <div class="container">
-        <div class="cta reveal">
-          <div class="grid md:grid-cols-2 md:items-center gap-8">
-            <div class="stack">
-              <span class="badge badge-accent">Redo för nästa steg?</span>
-              <h2>Boka en trygg konsultation med vårt kliniska team</h2>
-              <p>Beskriv kort vad du önskar hjälp med, så återkommer vi med rätt nästa steg och förslag på tid.</p>
-            </div>
-            <div class="cluster md:justify-between">
-              <a class="btn btn-secondary btn-lg" href="kontakt.html">Boka konsultation</a>
-              <a class="btn btn-outline btn-lg" href="behandling.html">Läs om behandling</a>
-            </div>
-          </div>
+        <div class="cta-block">
+          <h2 class="cta-block__title">Stay in the loop</h2>
+          <p class="cta-block__description">Get the latest articles delivered straight to your inbox. No spam, unsubscribe anytime.</p>
+          <form class="cta-block__form" id="newsletter-form" action="#newsletter" method="post">
+            <input type="email" class="input" placeholder="you@example.com" aria-label="Email address" required>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- ====================================================================
+       FOOTER
+       ==================================================================== -->
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-grid">
-        <div class="stack">
-          <a class="brand" href="index.html" aria-label="Nordisk Klinikhälsa startsida">
-            <span class="brand-mark" aria-hidden="true">+</span>
-            <span class="brand-text">
-              <span class="brand-name">Nordisk Klinikhälsa</span>
-              <span class="brand-subtitle">Specialistklinik</span>
-            </span>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="brand">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+            Inkwell
           </a>
-          <p>Modern, personlig och trygg specialistvård i en premium klinikmiljö i centrala Stockholm.</p>
+          <p class="footer-brand__description">A blog about design, development, and the craft of building thoughtful digital experiences.</p>
         </div>
-
-        <div class="stack">
-          <h3 class="text-base">Sidor</h3>
-          <a class="footer-link" href="index.html">Start</a>
-          <a class="footer-link" href="behandling.html">Behandling</a>
-          <a class="footer-link" href="kontakt.html">Kontakt</a>
+        <div>
+          <h4 class="footer-column__title">Pages</h4>
+          <ul class="footer-column__list">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="post.html" class="footer-link">Blog</a></li>
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+          </ul>
         </div>
-
-        <div class="stack">
-          <h3 class="text-base">Kontakt</h3>
-          <a class="footer-link" href="tel:+4681234567">08-123 45 67</a>
-          <a class="footer-link" href="mailto:kontakt@nordiskklinikhalsa.se">kontakt@nordiskklinikhalsa.se</a>
-          <a class="footer-link" href="kontakt.html">Boka konsultation</a>
-        </div>
-
-        <div class="stack">
-          <h3 class="text-base">Besök</h3>
-          <p>Birger Jarlsgatan 22<br />114 34 Stockholm</p>
-          <p>Mån–tor 08.00–17.00<br />Fre 08.00–15.00</p>
+        <div>
+          <h4 class="footer-column__title">Connect</h4>
+          <ul class="footer-column__list">
+            <li><a href="#" class="footer-link">Twitter</a></li>
+            <li><a href="#" class="footer-link">GitHub</a></li>
+            <li><a href="#" class="footer-link">LinkedIn</a></li>
+          </ul>
         </div>
       </div>
-
       <div class="footer-bottom">
-        <span>© 2026 Nordisk Klinikhälsa. Alla rättigheter förbehållna.</span>
-        <span>Integritet · Tillgänglighet · Kvalitet</span>
+        <span>&copy; 2025 Inkwell. All rights reserved.</span>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-link" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </footer>

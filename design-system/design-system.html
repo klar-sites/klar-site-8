@@ -1,1302 +1,1407 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Designsystem · Nordisk Klinikhälsa</title>
-  <meta name="description" content="Levande designsystem för en modern, premium och tillgänglig svensk klinikwebbplats." />
-  <link rel="stylesheet" href="/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System — Inkwell Blog</title>
+  <link rel="stylesheet" href="/style.css">
   <style>
-    /* Documentation chrome ONLY — not part of the design system. Every rule is prefixed .ds-. */
+    /* ===================================================================
+       Documentation chrome ONLY — not part of the design system.
+       Every rule is prefixed .ds-* and is used solely for layout /
+       annotation of the style-guide page itself.
+       =================================================================== */
     .ds-page {
-      padding-block: var(--space-12);
+      padding-bottom: var(--space-24);
     }
-
     .ds-block {
-      padding-block: var(--space-12);
-      border-bottom: 0.0625rem solid var(--border);
+      padding-top: var(--space-12);
+      padding-bottom: var(--space-12);
+      border-bottom: 1px solid var(--border);
     }
-
     .ds-block:last-child {
-      border-bottom: 0;
+      border-bottom: none;
     }
-
+    .ds-block > h2 {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-2);
+    }
     .ds-note {
-      max-width: 48rem;
-      margin-top: var(--space-3);
+      font-size: var(--text-sm);
       color: var(--muted-foreground);
+      margin-bottom: var(--space-8);
+      max-width: 48rem;
     }
-
     .ds-subhead {
-      margin-top: var(--space-10);
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-semibold);
+      margin-top: var(--space-8);
       margin-bottom: var(--space-4);
-      padding-top: var(--space-6);
-      border-top: 0.0625rem solid var(--border);
-      font-size: var(--text-xl);
+      color: var(--foreground);
     }
-
     .ds-specimens {
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-4);
-      align-items: center;
-      padding: var(--space-6);
-      border: 0.0625rem solid var(--border);
-      border-radius: var(--radius-xl);
-      background: color-mix(in srgb, var(--card) 80%, transparent);
+      align-items: flex-start;
     }
-
     .ds-specimens--grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-      align-items: stretch;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-6);
     }
-
     .ds-specimens--stack {
-      display: grid;
+      flex-direction: column;
+    }
+    .ds-sections {
       gap: var(--space-8);
     }
-
-    .ds-sections {
-      padding: var(--space-4);
-      background: var(--muted);
+    .ds-sections > * {
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-lg);
     }
-
     .ds-swatches {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
       gap: var(--space-4);
-      margin-top: var(--space-6);
     }
-
     .ds-swatch {
-      overflow: hidden;
-      border: 0.0625rem solid var(--border);
       border-radius: var(--radius-lg);
-      background: var(--card);
-      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      border: 1px solid var(--border);
     }
-
     .ds-swatch__color {
-      min-height: 5rem;
-      border-bottom: 0.0625rem solid var(--border);
+      height: 4rem;
     }
-
-    .ds-swatch__body {
-      padding: var(--space-4);
+    .ds-swatch__label {
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--text-xs);
+      font-weight: var(--font-weight-medium);
     }
-
+    .ds-swatch__token {
+      display: block;
+      font-size: 0.65rem;
+      color: var(--muted-foreground);
+      font-family: var(--font-mono);
+    }
     .ds-type-row {
-      display: grid;
-      gap: var(--space-4);
-      padding-block: var(--space-5, 1.25rem);
-      border-bottom: 0.0625rem solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--border);
     }
-
+    .ds-type-row:last-child { border-bottom: none; }
+    .ds-type-label {
+      font-size: var(--text-xs);
+      color: var(--muted-foreground);
+      font-family: var(--font-mono);
+    }
     .ds-scale {
-      display: grid;
-      gap: var(--space-3);
-      margin-top: var(--space-6);
-    }
-
-    .ds-scale__row {
-      display: grid;
-      grid-template-columns: 6rem 1fr;
+      display: flex;
+      flex-wrap: wrap;
       gap: var(--space-4);
+      align-items: flex-end;
+    }
+    .ds-scale-item {
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      gap: var(--space-2);
     }
-
-    .ds-scale__bar {
-      height: var(--space-4);
-      border-radius: var(--radius-full);
-      background: var(--primary);
+    .ds-scale-bar {
+      background-color: var(--primary);
+      border-radius: var(--radius-sm);
+      width: 2rem;
     }
-
-    .ds-scale__bar--1 { width: var(--space-1); }
-    .ds-scale__bar--2 { width: var(--space-2); }
-    .ds-scale__bar--3 { width: var(--space-3); }
-    .ds-scale__bar--4 { width: var(--space-4); }
-    .ds-scale__bar--6 { width: var(--space-6); }
-    .ds-scale__bar--8 { width: var(--space-8); }
-    .ds-scale__bar--10 { width: var(--space-10); }
-    .ds-scale__bar--12 { width: var(--space-12); }
-    .ds-scale__bar--16 { width: var(--space-16); }
-    .ds-scale__bar--20 { width: var(--space-20); }
-
+    .ds-scale-label {
+      font-size: var(--text-xs);
+      color: var(--muted-foreground);
+      font-family: var(--font-mono);
+    }
     .ds-radius-row,
     .ds-shadow-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-      gap: var(--space-4);
-      margin-top: var(--space-6);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-6);
+      align-items: flex-start;
     }
-
-    .ds-radius-sample,
-    .ds-shadow-sample {
-      min-height: 6rem;
-      display: grid;
-      place-items: center;
-      border: 0.0625rem solid var(--border);
-      background: var(--card);
-      color: var(--muted-foreground);
-      font-size: var(--text-sm);
+    .ds-radius-item,
+    .ds-shadow-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
     }
-
+    .ds-radius-box {
+      width: 4rem;
+      height: 4rem;
+      background-color: var(--primary);
+    }
+    .ds-shadow-box {
+      width: 5rem;
+      height: 5rem;
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
     .ds-showcase-hero {
-      padding-block: var(--space-16);
-      background:
-        radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--primary-soft) 80%, transparent), transparent 28rem),
-        linear-gradient(135deg, var(--background), var(--secondary));
-      border-bottom: 0.0625rem solid var(--border);
-    }
-
-    .ds-showcase-hero__inner {
-      display: grid;
-      gap: var(--space-8);
+      padding: var(--space-16) var(--space-4);
       text-align: center;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--background) 50%, var(--muted) 100%);
     }
-
+    .ds-showcase-hero__inner {
+      max-width: 48rem;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-6);
+    }
     .ds-showcase-hero__badge {
-      justify-self: center;
+      display: inline-flex;
     }
-
     .ds-showcase-hero__title {
-      max-width: 58rem;
-      margin-inline: auto;
+      font-size: var(--text-4xl);
+      font-weight: var(--font-weight-bold);
+      letter-spacing: var(--tracking-tighter);
+      line-height: var(--leading-tight);
+      background: linear-gradient(135deg, var(--foreground) 0%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-
+    @media (min-width: 768px) {
+      .ds-showcase-hero__title { font-size: var(--text-5xl); }
+      .ds-showcase-hero { padding: var(--space-24) var(--space-6); }
+    }
     .ds-showcase-hero__lead {
-      max-width: 44rem;
-      margin-inline: auto;
+      font-size: var(--text-lg);
+      color: var(--muted-foreground);
+      max-width: 36rem;
+      line-height: var(--leading-relaxed);
     }
-
     .ds-showcase-hero__actions {
       display: flex;
       flex-wrap: wrap;
+      gap: var(--space-3);
       justify-content: center;
-      gap: var(--space-3);
     }
-
     .ds-showcase-hero__stats {
-      max-width: 42rem;
-      margin-inline: auto;
+      display: flex;
+      gap: var(--space-8);
+      margin-top: var(--space-4);
     }
-
-    .ds-mini-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
-      gap: var(--space-3);
-      width: 100%;
+    .ds-showcase-hero__stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-
-    .ds-mini-cell {
-      min-height: 3rem;
-      display: grid;
-      place-items: center;
-      border: 0.0625rem solid var(--border);
-      border-radius: var(--radius-md);
-      background: var(--muted);
+    .ds-showcase-hero__stat-value {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--foreground);
+    }
+    .ds-showcase-hero__stat-label {
+      font-size: var(--text-xs);
       color: var(--muted-foreground);
-      font-size: var(--text-sm);
     }
-
-    @media (min-width: 768px) {
-      .ds-type-row {
-        grid-template-columns: 12rem 1fr;
-        align-items: baseline;
-      }
-
-      .ds-showcase-hero {
-        padding-block: var(--space-20);
-      }
+    .ds-border-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-6);
+    }
+    .ds-border-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .ds-border-box {
+      width: 5rem;
+      height: 3rem;
+      background-color: var(--muted);
+      border-color: var(--foreground);
+      border-style: solid;
     }
   </style>
 </head>
 <body>
+  <!-- ====================================================================
+       STICKY HEADER — built from the system's own components
+       ==================================================================== -->
   <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="Till toppen">
-        <span class="brand-mark" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span class="brand-text">
-          <span class="brand-name">Nordisk Klinikhälsa</span>
-          <span class="brand-subtitle">Designsystem</span>
-        </span>
+    <div class="container">
+      <a href="#top" class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        Inkwell
       </a>
-
-      <nav class="site-nav" aria-label="Designsystemets innehåll">
-        <a class="nav-link" href="#foundations">Grunder</a>
-        <a class="nav-link" href="#components">Komponenter</a>
-        <a class="nav-link" href="#sections">Sektioner</a>
+      <nav class="nav" aria-label="Design system navigation">
+        <a href="#colors" class="nav-link">Colors</a>
+        <a href="#typography" class="nav-link">Type</a>
+        <a href="#spacing" class="nav-link">Spacing</a>
+        <a href="#components" class="nav-link">Components</a>
+        <a href="#sections" class="nav-link">Sections</a>
       </nav>
-
       <div class="header-actions">
-        <button class="theme-toggle" type="button" aria-label="Toggle theme">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <button class="mobile-toggle" type="button" aria-label="Öppna meny" aria-expanded="false">
-          <span class="mobile-toggle__bars" aria-hidden="true"></span>
+        <button class="theme-toggle" aria-label="Toggle theme" type="button">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
       </div>
     </div>
   </header>
 
+  <!-- ====================================================================
+       SHOWCASE HERO (doc chrome)
+       ==================================================================== -->
   <section class="ds-showcase-hero" id="top">
-    <div class="container ds-showcase-hero__inner">
-      <span class="badge badge-primary ds-showcase-hero__badge">Levande katalog för Klar</span>
-      <h1 class="ds-showcase-hero__title">Ett lugnt, premium och vårdnära designsystem</h1>
-      <p class="lead ds-showcase-hero__lead">Systemet bygger klinikwebbplatsen med tokens, återanvändbara komponenter, tillgängliga formulär och konverterande sektioner – helt utan byggsteg.</p>
+    <div class="ds-showcase-hero__inner">
+      <span class="ds-showcase-hero__badge">
+        <span class="badge badge-primary">Design System v1.0</span>
+      </span>
+      <h1 class="ds-showcase-hero__title">Inkwell Design System</h1>
+      <p class="ds-showcase-hero__lead">A complete, token-driven design system powering a modern blog. Every color, component, and section pattern — rendered live from a single stylesheet.</p>
       <div class="ds-showcase-hero__actions">
-        <a class="btn btn-primary" href="#components">Se komponenter</a>
-        <a class="btn btn-outline" href="#sections">Se sektioner</a>
+        <a href="#components" class="btn btn-primary">Explore Components</a>
+        <a href="#sections" class="btn btn-outline">View Sections</a>
       </div>
-      <div class="stat-grid ds-showcase-hero__stats">
-        <div class="stat">
-          <span class="stat__value">3</span>
-          <span class="stat__label">Webbsidor</span>
+      <div class="ds-showcase-hero__stats">
+        <div class="ds-showcase-hero__stat">
+          <span class="ds-showcase-hero__stat-value">20+</span>
+          <span class="ds-showcase-hero__stat-label">Components</span>
         </div>
-        <div class="stat">
-          <span class="stat__value">WCAG</span>
-          <span class="stat__label">Vänliga mönster</span>
+        <div class="ds-showcase-hero__stat">
+          <span class="ds-showcase-hero__stat-value">7</span>
+          <span class="ds-showcase-hero__stat-label">Sections</span>
         </div>
-        <div class="stat">
-          <span class="stat__value">0</span>
-          <span class="stat__label">Externa beroenden</span>
+        <div class="ds-showcase-hero__stat">
+          <span class="ds-showcase-hero__stat-value">2</span>
+          <span class="ds-showcase-hero__stat-label">Themes</span>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ====================================================================
+       MAIN CONTENT
+       ==================================================================== -->
   <main class="container ds-page">
-    <section class="ds-block" id="foundations">
-      <span class="eyebrow">Foundations</span>
-      <h2>Färger</h2>
-      <p class="ds-note">Semantiska färgtokens används genom hela webbplatsen och växlas automatiskt i mörkt läge.</p>
 
+    <!-- ================================================================
+         FOUNDATIONS — Colors
+         ================================================================ -->
+    <section class="ds-block" id="colors">
+      <h2>Colors</h2>
+      <p class="ds-note">Semantic color tokens mapped onto a raw palette. Overridden automatically in dark mode via the <code>.dark</code> class.</p>
+
+      <h3 class="ds-subhead">Backgrounds</h3>
       <div class="ds-swatches">
-        <div class="ds-swatch">
-          <div class="ds-swatch__color bg-background"></div>
-          <div class="ds-swatch__body">
-            <strong>Background</strong>
-            <p class="text-sm">bg-background</p>
-          </div>
-        </div>
-        <div class="ds-swatch">
-          <div class="ds-swatch__color bg-foreground"></div>
-          <div class="ds-swatch__body">
-            <strong>Foreground</strong>
-            <p class="text-sm">bg-foreground</p>
-          </div>
-        </div>
-        <div class="ds-swatch">
-          <div class="ds-swatch__color bg-primary"></div>
-          <div class="ds-swatch__body">
-            <strong>Primary</strong>
-            <p class="text-sm">bg-primary</p>
-          </div>
-        </div>
-        <div class="ds-swatch">
-          <div class="ds-swatch__color bg-primary-soft"></div>
-          <div class="ds-swatch__body">
-            <strong>Primary soft</strong>
-            <p class="text-sm">bg-primary-soft</p>
-          </div>
-        </div>
-        <div class="ds-swatch">
-          <div class="ds-swatch__color bg-secondary"></div>
-          <div class="ds-swatch__body">
-            <strong>Secondary</strong>
-            <p class="text-sm">bg-secondary</p>
-          </div>
-        </div>
-        <div class="ds-swatch">
-          <div class="ds-swatch__color bg-muted"></div>
-          <div class="ds-swatch__body">
-            <strong>Muted</strong>
-            <p class="text-sm">bg-muted</p>
-          </div>
-        </div>
-        <div class="ds-swatch">
-          <div class="ds-swatch__color bg-accent"></div>
-          <div class="ds-swatch__body">
-            <strong>Accent</strong>
-            <p class="text-sm">bg-accent</p>
-          </div>
-        </div>
-        <div class="ds-swatch">
-          <div class="ds-swatch__color bg-card"></div>
-          <div class="ds-swatch__body">
-            <strong>Card</strong>
-            <p class="text-sm">bg-card</p>
-          </div>
-        </div>
+        <div class="ds-swatch"><div class="ds-swatch__color bg-background border-b"></div><div class="ds-swatch__label">Page<span class="ds-swatch__token">bg-background</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__color bg-foreground"></div><div class="ds-swatch__label">Foreground<span class="ds-swatch__token">bg-foreground</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__color bg-primary"></div><div class="ds-swatch__label">Primary<span class="ds-swatch__token">bg-primary</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__color bg-secondary"></div><div class="ds-swatch__label">Secondary<span class="ds-swatch__token">bg-secondary</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__color bg-muted"></div><div class="ds-swatch__label">Muted<span class="ds-swatch__token">bg-muted</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__color bg-accent"></div><div class="ds-swatch__label">Accent<span class="ds-swatch__token">bg-accent</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__color bg-card border-b"></div><div class="ds-swatch__label">Card<span class="ds-swatch__token">bg-card</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__color bg-destructive"></div><div class="ds-swatch__label">Destructive<span class="ds-swatch__token">bg-destructive</span></div></div>
+      </div>
+
+      <h3 class="ds-subhead">Text Colors</h3>
+      <div class="ds-swatches">
+        <div class="ds-swatch"><div class="ds-swatch__color bg-foreground"></div><div class="ds-swatch__label">Foreground<span class="ds-swatch__token">text-foreground</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__color bg-background border-b"></div><div class="ds-swatch__label">Background<span class="ds-swatch__token">text-background</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__color bg-primary"></div><div class="ds-swatch__label">Primary<span class="ds-swatch__token">text-primary</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__color" style="background-color: var(--muted-foreground)"></div><div class="ds-swatch__label">Muted<span class="ds-swatch__token">text-muted-foreground</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__color" style="background-color: var(--accent-foreground)"></div><div class="ds-swatch__label">Accent<span class="ds-swatch__token">text-accent-foreground</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__color bg-destructive"></div><div class="ds-swatch__label">Destructive<span class="ds-swatch__token">text-destructive</span></div></div>
+      </div>
+
+      <h3 class="ds-subhead">Border Colors</h3>
+      <div class="ds-swatches">
+        <div class="ds-swatch"><div class="ds-swatch__color" style="background-color: var(--border)"></div><div class="ds-swatch__label">Default<span class="ds-swatch__token">--border</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__color" style="background-color: var(--muted)"></div><div class="ds-swatch__label">Muted<span class="ds-swatch__token">border-muted</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__color bg-primary"></div><div class="ds-swatch__label">Primary<span class="ds-swatch__token">border-primary</span></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__color bg-foreground"></div><div class="ds-swatch__label">Foreground<span class="ds-swatch__token">border-foreground</span></div></div>
       </div>
     </section>
 
+    <!-- ================================================================
+         FOUNDATIONS — Typography
+         ================================================================ -->
     <section class="ds-block" id="typography">
-      <h2>Typografi</h2>
-      <p class="ds-note">Skalan prioriterar tydlig hierarki, långa svenska rubriker och hög läsbarhet i vårdkontext.</p>
+      <h2>Typography</h2>
+      <p class="ds-note">Inter for all text, a tight type scale from xs to 5xl, four font weights.</p>
 
-      <div class="mt-8">
-        <div class="ds-type-row">
-          <p class="text-sm font-semibold uppercase tracking-wider">Display</p>
-          <p class="text-5xl font-bold leading-tight tracking-tight text-foreground">Trygg specialistvård i lugn miljö</p>
-        </div>
-        <div class="ds-type-row">
-          <p class="text-sm font-semibold uppercase tracking-wider">Rubrik 1</p>
-          <p class="text-4xl font-bold leading-tight tracking-tight text-foreground">Personlig vård med medicinsk precision</p>
-        </div>
-        <div class="ds-type-row">
-          <p class="text-sm font-semibold uppercase tracking-wider">Rubrik 2</p>
-          <p class="text-3xl font-bold leading-snug text-foreground">Behandlingar som planeras runt dig</p>
-        </div>
-        <div class="ds-type-row">
-          <p class="text-sm font-semibold uppercase tracking-wider">Brödtext</p>
-          <p class="text-base leading-relaxed">Vi kombinerar modern diagnostik med ett varmt bemötande, tydlig information och uppföljning efter varje besök.</p>
-        </div>
-        <div class="ds-type-row">
-          <p class="text-sm font-semibold uppercase tracking-wider">Meta</p>
-          <p class="text-xs font-medium uppercase tracking-wide text-muted-foreground">Öppet måndag–fredag · Centrala Stockholm</p>
-        </div>
+      <h3 class="ds-subhead">Type Scale</h3>
+      <div>
+        <div class="ds-type-row"><span class="ds-type-label">text-xs · 0.75rem</span><span class="text-xs">The quick brown fox jumps over the lazy dog</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">text-sm · 0.875rem</span><span class="text-sm">The quick brown fox jumps over the lazy dog</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">text-base · 1rem</span><span class="text-base">The quick brown fox jumps over the lazy dog</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">text-lg · 1.125rem</span><span class="text-lg">The quick brown fox jumps over the lazy dog</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">text-xl · 1.25rem</span><span class="text-xl">The quick brown fox jumps over the lazy dog</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">text-2xl · 1.5rem</span><span class="text-2xl">The quick brown fox jumps over the lazy dog</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">text-3xl · 1.875rem</span><span class="text-3xl">The quick brown fox jumps</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">text-4xl · 2.25rem</span><span class="text-4xl">The quick brown fox</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">text-5xl · 3rem</span><span class="text-5xl">Quick brown fox</span></div>
       </div>
 
-      <h3 class="ds-subhead">Rich text</h3>
-      <div class="prose container-narrow">
-        <h1>Patientinformation inför ditt besök</h1>
-        <p>Inför en behandling går vi alltid igenom din hälsobakgrund, dina mål och vilka resultat som är realistiska. Du får en tydlig plan och tid att ställa frågor.</p>
-        <h2>Så förbereder du dig</h2>
-        <p>Ta med aktuell läkemedelslista och kom gärna några minuter före din tid. Om du har frågor kan du <a href="#sections">kontakta kliniken</a> innan besöket.</p>
-        <ul>
-          <li>Undvik stark hudvård på behandlingsområdet samma dag.</li>
-          <li>Berätta om allergier, graviditet eller tidigare reaktioner.</li>
-          <li>Följ de individuella råd du får efter konsultationen.</li>
-        </ul>
-        <blockquote>En trygg behandling börjar med rätt information, rimliga förväntningar och en plan som följs upp.</blockquote>
-        <p>Exempel på intern notering: <code>uppföljning inom 14 dagar</code>.</p>
+      <h3 class="ds-subhead">Font Weights</h3>
+      <div>
+        <div class="ds-type-row"><span class="ds-type-label">font-normal · 400</span><span class="text-lg font-normal">Design systems create consistency at scale.</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">font-medium · 500</span><span class="text-lg font-medium">Design systems create consistency at scale.</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">font-semibold · 600</span><span class="text-lg font-semibold">Design systems create consistency at scale.</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">font-bold · 700</span><span class="text-lg font-bold">Design systems create consistency at scale.</span></div>
+      </div>
+
+      <h3 class="ds-subhead">Line Heights</h3>
+      <div>
+        <div class="ds-type-row"><span class="ds-type-label">leading-tight · 1.15</span><span class="text-base leading-tight">Tight line height for headlines and large display text that needs compact vertical rhythm.</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">leading-snug · 1.3</span><span class="text-base leading-snug">Snug line height for sub-headings and card titles that benefit from slightly more breathing room.</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">leading-normal · 1.6</span><span class="text-base leading-normal">Normal line height for body copy and general reading. Balanced for comfortable scanning.</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">leading-relaxed · 1.75</span><span class="text-base leading-relaxed">Relaxed line height for long-form prose and descriptions. Maximum readability.</span></div>
+      </div>
+
+      <h3 class="ds-subhead">Letter Spacing</h3>
+      <div>
+        <div class="ds-type-row"><span class="ds-type-label">tracking-tighter · -0.04em</span><span class="text-xl tracking-tighter">Tighter tracking for large display</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">tracking-tight · -0.02em</span><span class="text-xl tracking-tight">Tight tracking for headings</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">tracking-normal · 0</span><span class="text-xl tracking-normal">Normal tracking for body text</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">tracking-wide · 0.025em</span><span class="text-sm tracking-wide uppercase">Wide tracking for labels</span></div>
+        <div class="ds-type-row"><span class="ds-type-label">tracking-wider · 0.05em</span><span class="text-sm tracking-wider uppercase">Wider tracking for eyebrows</span></div>
       </div>
     </section>
 
+    <!-- ================================================================
+         FOUNDATIONS — Spacing
+         ================================================================ -->
     <section class="ds-block" id="spacing">
       <h2>Spacing</h2>
-      <p class="ds-note">En kompakt men flexibel rytm skapar konsekventa sektioner, kort och formulär.</p>
+      <p class="ds-note">A small, opinionated spacing scale. Used for padding, margin, and gap utilities.</p>
 
+      <h3 class="ds-subhead">Padding & Margin Scale</h3>
       <div class="ds-scale">
-        <div class="ds-scale__row"><span>space-1</span><div class="ds-scale__bar ds-scale__bar--1"></div></div>
-        <div class="ds-scale__row"><span>space-2</span><div class="ds-scale__bar ds-scale__bar--2"></div></div>
-        <div class="ds-scale__row"><span>space-3</span><div class="ds-scale__bar ds-scale__bar--3"></div></div>
-        <div class="ds-scale__row"><span>space-4</span><div class="ds-scale__bar ds-scale__bar--4"></div></div>
-        <div class="ds-scale__row"><span>space-6</span><div class="ds-scale__bar ds-scale__bar--6"></div></div>
-        <div class="ds-scale__row"><span>space-8</span><div class="ds-scale__bar ds-scale__bar--8"></div></div>
-        <div class="ds-scale__row"><span>space-10</span><div class="ds-scale__bar ds-scale__bar--10"></div></div>
-        <div class="ds-scale__row"><span>space-12</span><div class="ds-scale__bar ds-scale__bar--12"></div></div>
-        <div class="ds-scale__row"><span>space-16</span><div class="ds-scale__bar ds-scale__bar--16"></div></div>
-        <div class="ds-scale__row"><span>space-20</span><div class="ds-scale__bar ds-scale__bar--20"></div></div>
+        <div class="ds-scale-item"><div class="ds-scale-bar" style="height:4px"></div><span class="ds-scale-label">1 · 0.25rem</span></div>
+        <div class="ds-scale-item"><div class="ds-scale-bar" style="height:8px"></div><span class="ds-scale-label">2 · 0.5rem</span></div>
+        <div class="ds-scale-item"><div class="ds-scale-bar" style="height:12px"></div><span class="ds-scale-label">3 · 0.75rem</span></div>
+        <div class="ds-scale-item"><div class="ds-scale-bar" style="height:16px"></div><span class="ds-scale-label">4 · 1rem</span></div>
+        <div class="ds-scale-item"><div class="ds-scale-bar" style="height:24px"></div><span class="ds-scale-label">6 · 1.5rem</span></div>
+        <div class="ds-scale-item"><div class="ds-scale-bar" style="height:32px"></div><span class="ds-scale-label">8 · 2rem</span></div>
+        <div class="ds-scale-item"><div class="ds-scale-bar" style="height:40px"></div><span class="ds-scale-label">10 · 2.5rem</span></div>
+        <div class="ds-scale-item"><div class="ds-scale-bar" style="height:48px"></div><span class="ds-scale-label">12 · 3rem</span></div>
+        <div class="ds-scale-item"><div class="ds-scale-bar" style="height:64px"></div><span class="ds-scale-label">16 · 4rem</span></div>
+        <div class="ds-scale-item"><div class="ds-scale-bar" style="height:80px"></div><span class="ds-scale-label">20 · 5rem</span></div>
+        <div class="ds-scale-item"><div class="ds-scale-bar" style="height:96px"></div><span class="ds-scale-label">24 · 6rem</span></div>
       </div>
     </section>
 
+    <!-- ================================================================
+         FOUNDATIONS — Borders
+         ================================================================ -->
     <section class="ds-block" id="borders">
-      <h2>Radier, kanter och skuggor</h2>
-      <p class="ds-note">Mjuka hörn, tunna kanter och diskreta skuggor ger premiumkänsla utan att kännas kommersiellt.</p>
+      <h2>Borders</h2>
+      <p class="ds-note">Border width utilities at 1px, 2px, and 4px — on all sides, per-axis, and per-side.</p>
+
+      <div class="ds-border-row">
+        <div class="ds-border-item"><div class="ds-border-box" style="border-width:0"></div><span class="ds-scale-label">border-0</span></div>
+        <div class="ds-border-item"><div class="ds-border-box" style="border-width:1px"></div><span class="ds-scale-label">border</span></div>
+        <div class="ds-border-item"><div class="ds-border-box" style="border-width:2px"></div><span class="ds-scale-label">border-2</span></div>
+        <div class="ds-border-item"><div class="ds-border-box" style="border-width:4px"></div><span class="ds-scale-label">border-4</span></div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         FOUNDATIONS — Radius
+         ================================================================ -->
+    <section class="ds-block" id="radius">
+      <h2>Radius</h2>
+      <p class="ds-note">Five corner-radius tokens from sharp to pill.</p>
 
       <div class="ds-radius-row">
-        <div class="ds-radius-sample rounded-sm">Small</div>
-        <div class="ds-radius-sample rounded-md">Medium</div>
-        <div class="ds-radius-sample rounded-lg">Large</div>
-        <div class="ds-radius-sample rounded-xl">XL</div>
-        <div class="ds-radius-sample rounded-2xl">2XL</div>
-        <div class="ds-radius-sample rounded-full">Full</div>
-      </div>
-
-      <div class="ds-shadow-row">
-        <div class="ds-shadow-sample rounded-lg shadow-none">None</div>
-        <div class="ds-shadow-sample rounded-lg shadow-sm">Small</div>
-        <div class="ds-shadow-sample rounded-lg shadow-md">Medium</div>
-        <div class="ds-shadow-sample rounded-lg shadow-lg">Large</div>
-        <div class="ds-shadow-sample rounded-lg shadow-glow">Glow</div>
+        <div class="ds-radius-item"><div class="ds-radius-box rounded-none"></div><span class="ds-scale-label">none</span></div>
+        <div class="ds-radius-item"><div class="ds-radius-box rounded-sm"></div><span class="ds-scale-label">sm</span></div>
+        <div class="ds-radius-item"><div class="ds-radius-box rounded-md"></div><span class="ds-scale-label">md</span></div>
+        <div class="ds-radius-item"><div class="ds-radius-box rounded-lg"></div><span class="ds-scale-label">lg</span></div>
+        <div class="ds-radius-item"><div class="ds-radius-box rounded-xl"></div><span class="ds-scale-label">xl</span></div>
+        <div class="ds-radius-item"><div class="ds-radius-box rounded-full"></div><span class="ds-scale-label">full</span></div>
       </div>
     </section>
 
-    <section class="ds-block" id="components">
-      <span class="eyebrow">Component Library</span>
-      <h2>Komponenter</h2>
-      <p class="ds-note">Varje grupp är registrerad med <code>data-klar-ds-elements</code> så att Klar kan infoga komponenter direkt.</p>
+    <!-- ================================================================
+         FOUNDATIONS — Shadows
+         ================================================================ -->
+    <section class="ds-block" id="shadows">
+      <h2>Shadows</h2>
+      <p class="ds-note">Four elevation levels. Automatically adjusted in dark mode.</p>
 
+      <div class="ds-shadow-row">
+        <div class="ds-shadow-item"><div class="ds-shadow-box shadow-none"></div><span class="ds-scale-label">none</span></div>
+        <div class="ds-shadow-item"><div class="ds-shadow-box shadow-sm"></div><span class="ds-scale-label">sm</span></div>
+        <div class="ds-shadow-item"><div class="ds-shadow-box shadow-md"></div><span class="ds-scale-label">md</span></div>
+        <div class="ds-shadow-item"><div class="ds-shadow-box shadow-lg"></div><span class="ds-scale-label">lg</span></div>
+        <div class="ds-shadow-item"><div class="ds-shadow-box shadow-xl"></div><span class="ds-scale-label">xl</span></div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         FOUNDATIONS — Rich Text
+         ================================================================ -->
+    <section class="ds-block" id="rich-text">
+      <h2>Rich Text</h2>
+      <p class="ds-note">The <code>.prose</code> wrapper class styles long-form HTML content — headings, paragraphs, links, lists, blockquotes, code, and images.</p>
+
+      <div class="prose max-w-3xl">
+        <h2>Why Design Systems Matter</h2>
+        <p>A design system is more than a style guide. It's a <strong>shared language</strong> between designers and developers that ensures consistency, accelerates development, and reduces decision fatigue across every page.</p>
+        <p>When implemented correctly, a design system lets you move faster without sacrificing quality. Here's what makes a great one:</p>
+        <ul>
+          <li><strong>Tokens first</strong> — colors, spacing, and type live in variables, not scattered across components</li>
+          <li><strong>Composable components</strong> — small, focused pieces that snap together</li>
+          <li><strong>Utility classes</strong> — for the adjustments that vary between instances</li>
+          <li><strong>Documentation</strong> — so anyone can understand and extend the system</li>
+        </ul>
+        <blockquote>Good design is obvious. Great design is transparent. — Joe Sparano</blockquote>
+        <h3>Implementation Notes</h3>
+        <p>Every component in this system uses <a href="#colors">semantic tokens</a> so that switching between light and dark themes is automatic — no per-component overrides needed.</p>
+        <p>Inline code looks like <code>var(--primary)</code>, and code blocks use the monospace stack:</p>
+        <pre><code>:root {
+  --primary: #4f46e5;
+  --background: #ffffff;
+}</code></pre>
+        <ol>
+          <li>Define your tokens</li>
+          <li>Build semantic components on top</li>
+          <li>Add utility classes for fine-grained control</li>
+        </ol>
+        <p>That's the entire architecture in three steps.</p>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         COMPONENT LIBRARY
+         ================================================================ -->
+    <section class="ds-block" id="components">
+      <h2>Component Library</h2>
+      <p class="ds-note">Every semantic component, with all variants, rendered live from <code>style.css</code>.</p>
+
+      <!-- Buttons -->
       <h3 class="ds-subhead">Buttons</h3>
       <div class="ds-specimens" data-klar-ds-elements="buttons" data-klar-ds-label="Buttons">
-        <a class="btn btn-primary" href="#" data-klar-ds-label="Primary link">Boka konsultation</a>
-        <button class="btn btn-primary" type="button" data-klar-ds-label="Primary button">Boka konsultation</button>
-        <a class="btn btn-secondary" href="#" data-klar-ds-label="Secondary link">Se behandlingar</a>
-        <button class="btn btn-secondary" type="button" data-klar-ds-label="Secondary button">Se behandlingar</button>
-        <a class="btn btn-outline" href="#" data-klar-ds-label="Outline link">Kontakta oss</a>
-        <button class="btn btn-outline" type="button" data-klar-ds-label="Outline button">Kontakta oss</button>
-        <a class="btn btn-ghost" href="#" data-klar-ds-label="Ghost link">Läs mer</a>
-        <button class="btn btn-ghost" type="button" data-klar-ds-label="Ghost button">Läs mer</button>
-        <a class="btn btn-primary btn-lg" href="#" data-klar-ds-label="Large primary link">Boka tid online</a>
-        <button class="btn btn-primary btn-sm" type="button" data-klar-ds-label="Small primary button">Skicka</button>
+        <a href="#" class="btn btn-primary" data-klar-ds-label="Primary link">Primary</a>
+        <button class="btn btn-primary" data-klar-ds-label="Primary button">Primary</button>
+        <a href="#" class="btn btn-outline" data-klar-ds-label="Outline link">Outline</a>
+        <button class="btn btn-outline" data-klar-ds-label="Outline button">Outline</button>
+        <a href="#" class="btn btn-ghost" data-klar-ds-label="Ghost link">Ghost</a>
+        <button class="btn btn-ghost" data-klar-ds-label="Ghost button">Ghost</button>
+        <a href="#" class="btn btn-secondary" data-klar-ds-label="Secondary link">Secondary</a>
+        <button class="btn btn-secondary" data-klar-ds-label="Secondary button">Secondary</button>
+        <a href="#" class="btn btn-destructive" data-klar-ds-label="Destructive link">Destructive</a>
+        <button class="btn btn-destructive" data-klar-ds-label="Destructive button">Destructive</button>
+        <button class="btn btn-primary btn-sm" data-klar-ds-label="Small primary">Small</button>
+        <button class="btn btn-primary btn-lg" data-klar-ds-label="Large primary">Large</button>
+        <button class="btn btn-outline btn-icon" data-klar-ds-label="Icon button" aria-label="Settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
       </div>
 
-      <h3 class="ds-subhead">Navigation links</h3>
-      <div class="ds-specimens" data-klar-ds-elements="navigation" data-klar-ds-label="Navigation">
-        <a class="nav-link" href="#" data-klar-ds-label="Navigation link">Behandlingar</a>
-        <a class="nav-link" href="#" aria-current="page" data-klar-ds-label="Active navigation link">Kontakt</a>
-        <a class="cta-link" href="#" data-klar-ds-label="CTA text link">Läs om behandlingen →</a>
-        <a class="footer-link" href="#" data-klar-ds-label="Footer link">Integritetspolicy</a>
+      <!-- CTA Links -->
+      <h3 class="ds-subhead">CTA Links</h3>
+      <div class="ds-specimens" data-klar-ds-elements="cta-links" data-klar-ds-label="CTA Links">
+        <a href="#" class="cta-link" data-klar-ds-label="Default CTA link">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       </div>
 
+      <!-- Nav Links -->
+      <h3 class="ds-subhead">Nav Links</h3>
+      <div class="ds-specimens" data-klar-ds-elements="nav-links" data-klar-ds-label="Nav Links">
+        <a href="#" class="nav-link" data-klar-ds-label="Default nav link">Navigation</a>
+        <a href="#" class="nav-link active" data-klar-ds-label="Active nav link">Active</a>
+      </div>
+
+      <!-- Badges -->
       <h3 class="ds-subhead">Badges</h3>
       <div class="ds-specimens" data-klar-ds-elements="badges" data-klar-ds-label="Badges">
-        <span class="badge" data-klar-ds-label="Neutral badge">Specialistteam</span>
-        <span class="badge badge-primary" data-klar-ds-label="Primary badge">Trygg konsultation</span>
-        <span class="badge badge-accent" data-klar-ds-label="Accent badge">Premiumvård</span>
+        <span class="badge badge-primary" data-klar-ds-label="Primary badge">Featured</span>
+        <span class="badge badge-secondary" data-klar-ds-label="Secondary badge">New</span>
+        <span class="badge badge-outline" data-klar-ds-label="Outline badge">Draft</span>
       </div>
 
+      <!-- Tags -->
+      <h3 class="ds-subhead">Tags</h3>
+      <div class="ds-specimens" data-klar-ds-elements="tags" data-klar-ds-label="Tags">
+        <a href="#" class="tag" data-klar-ds-label="Default tag">Design</a>
+        <a href="#" class="tag" data-klar-ds-label="Tag">Technology</a>
+        <span class="tag" data-klar-ds-label="Static tag">Productivity</span>
+      </div>
+
+      <!-- Forms -->
+      <h3 class="ds-subhead">Form Controls</h3>
+      <div class="ds-specimens ds-specimens--grid" data-klar-ds-elements="form-controls" data-klar-ds-label="Form Controls">
+        <div class="field" data-klar-ds-label="Text input">
+          <label class="label" for="ds-name">Full Name</label>
+          <input type="text" id="ds-name" class="input" placeholder="Jane Doe">
+        </div>
+        <div class="field" data-klar-ds-label="Email input">
+          <label class="label" for="ds-email">Email</label>
+          <input type="email" id="ds-email" class="input" placeholder="jane@example.com">
+        </div>
+        <div class="field" data-klar-ds-label="Select">
+          <label class="label" for="ds-topic">Topic</label>
+          <select id="ds-topic" class="select">
+            <option>General inquiry</option>
+            <option>Feedback</option>
+            <option>Collaboration</option>
+          </select>
+        </div>
+        <div class="field" data-klar-ds-label="Textarea">
+          <label class="label" for="ds-msg">Message</label>
+          <textarea id="ds-msg" class="textarea" placeholder="Write something…"></textarea>
+        </div>
+        <div class="field" data-klar-ds-label="Field with error">
+          <label class="label" for="ds-err">Email</label>
+          <input type="email" id="ds-err" class="input" value="notanemail">
+          <span class="field-error">Please enter a valid email address.</span>
+        </div>
+      </div>
+
+      <!-- Cards -->
       <h3 class="ds-subhead">Cards</h3>
       <div class="ds-specimens ds-specimens--grid" data-klar-ds-elements="cards" data-klar-ds-label="Cards">
-        <article class="card service-card" data-klar-ds-label="Service card">
-          <div class="card__header">
-            <span class="card__icon" aria-hidden="true">+</span>
-            <h3 class="card__title">Medicinsk hudkonsultation</h3>
-          </div>
+        <a href="#" class="card card--link" data-klar-ds-label="Post card with image">
+          <img class="card__image" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=340&fit=crop" alt="Laptop on a desk with coffee" loading="lazy">
           <div class="card__body">
-            <p>Individuell bedömning, behandlingsplan och rådgivning för hudhälsa över tid.</p>
+            <div class="mb-2"><span class="badge badge-primary">Design</span></div>
+            <h3 class="card__title">Building Better User Interfaces</h3>
+            <p class="card__excerpt">Learn the principles behind intuitive, accessible interfaces that users actually enjoy.</p>
           </div>
           <div class="card__footer">
-            <a class="cta-link" href="#">Läs mer →</a>
+            <span class="card__meta">Mar 15, 2025</span>
+            <span class="card__meta">5 min read</span>
           </div>
-        </article>
-
-        <article class="testimonial" data-klar-ds-label="Testimonial card">
-          <blockquote>“Jag kände mig lyssnad på från första samtalet. Allt förklarades lugnt och professionellt.”</blockquote>
-          <div class="testimonial__author">
-            <span class="avatar" aria-hidden="true">AL</span>
-            <div>
-              <strong>Anna L.</strong>
-              <p class="text-sm">Patient, Stockholm</p>
-            </div>
+        </a>
+        <div class="card" data-klar-ds-label="Card without image">
+          <div class="card__body">
+            <h3 class="card__title">Quick Thoughts on Typography</h3>
+            <p class="card__excerpt">Good type is invisible. Bad type is everywhere. Here are some rules to keep in mind.</p>
           </div>
-        </article>
-
-        <article class="media-card" data-klar-ds-label="Media card">
-          <img class="media-image aspect-video object-cover" src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=80" alt="Ljust behandlingsrum på klinik" />
-          <div class="media-card__body">
-            <h3>Rofyllda behandlingsrum</h3>
-            <p>Miljöer utformade för integritet, lugn och tydlig kommunikation.</p>
+          <div class="card__footer">
+            <span class="card__meta">Feb 28, 2025</span>
+            <span class="card__meta">3 min read</span>
           </div>
-        </article>
+        </div>
       </div>
 
-      <h3 class="ds-subhead">Forms</h3>
-      <div class="ds-specimens ds-specimens--grid" data-klar-ds-elements="forms" data-klar-ds-label="Forms">
-        <form class="form card p-6" data-klar-ds-label="Contact form">
-          <div class="field">
-            <label class="label" for="ds-name">Namn</label>
-            <input class="input" id="ds-name" name="name" type="text" placeholder="Ditt namn" />
-          </div>
-          <div class="field">
-            <label class="label" for="ds-email">E-post</label>
-            <input class="input" id="ds-email" name="email" type="email" placeholder="namn@exempel.se" />
-          </div>
-          <div class="field">
-            <label class="label" for="ds-service">Ärende</label>
-            <select class="select" id="ds-service" name="service">
-              <option>Konsultation</option>
-              <option>Återbesök</option>
-            </select>
-          </div>
-          <div class="field">
-            <label class="label" for="ds-message">Meddelande</label>
-            <textarea class="textarea" id="ds-message" name="message" placeholder="Berätta kort vad du önskar hjälp med"></textarea>
-          </div>
-          <button class="btn btn-primary" type="submit">Skicka förfrågan</button>
-          <p class="form-note">Vi återkommer normalt inom en arbetsdag.</p>
-        </form>
-      </div>
-
-      <h3 class="ds-subhead">FAQ accordion</h3>
-      <div class="ds-specimens ds-specimens--stack" data-klar-ds-elements="accordions" data-klar-ds-label="Accordions">
-        <div class="accordion is-open" data-klar-ds-label="FAQ item">
-          <button class="accordion__button" type="button" aria-expanded="true">
-            Hur bokar jag en konsultation?
-            <span class="accordion__icon" aria-hidden="true">+</span>
-          </button>
-          <div class="accordion__panel">
-            <div class="accordion__content">
-              <div class="accordion__content-inner">
-                <p>Du kan boka via formuläret eller ringa oss. Vi hjälper dig att hitta rätt första steg.</p>
+      <!-- Featured Card -->
+      <h3 class="ds-subhead">Featured Card</h3>
+      <div class="ds-specimens ds-specimens--stack" data-klar-ds-elements="featured-cards" data-klar-ds-label="Featured Cards">
+        <a href="#" class="featured-card" data-klar-ds-label="Featured card">
+          <img class="featured-card__image" src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=500&fit=crop" alt="Code on screen" loading="lazy">
+          <div class="featured-card__content">
+            <span class="badge badge-primary">Featured</span>
+            <h2 class="featured-card__title">The Future of Web Development</h2>
+            <p class="featured-card__excerpt">Exploring how modern tooling, AI assistance, and design systems are reshaping how we build for the web — and what it means for developers.</p>
+            <div class="author-block">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Alex Rivera" class="avatar avatar-sm" loading="lazy">
+              <div class="author-block__info">
+                <span class="author-block__name">Alex Rivera</span>
+                <span class="author-block__detail">Mar 20, 2025 · 8 min read</span>
               </div>
             </div>
           </div>
+        </a>
+      </div>
+
+      <!-- Author Block -->
+      <h3 class="ds-subhead">Author Block</h3>
+      <div class="ds-specimens" data-klar-ds-elements="author-blocks" data-klar-ds-label="Author Blocks">
+        <div class="author-block" data-klar-ds-label="Default author block">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Alex Rivera" class="avatar" loading="lazy">
+          <div class="author-block__info">
+            <span class="author-block__name">Alex Rivera</span>
+            <span class="author-block__detail">Senior Writer · March 20, 2025</span>
+          </div>
         </div>
       </div>
 
+      <!-- Social Share -->
+      <h3 class="ds-subhead">Social Sharing</h3>
+      <div class="ds-specimens" data-klar-ds-elements="social-share" data-klar-ds-label="Social Share">
+        <div class="social-share" data-klar-ds-label="Share buttons">
+          <a href="#" class="social-share__btn" aria-label="Share on Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+          <a href="#" class="social-share__btn" aria-label="Share on LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" class="social-share__btn" aria-label="Copy link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Table of Contents -->
+      <h3 class="ds-subhead">Table of Contents</h3>
+      <div class="ds-specimens ds-specimens--stack" data-klar-ds-elements="toc" data-klar-ds-label="Table of Contents">
+        <nav class="toc" data-klar-ds-label="Default TOC" aria-label="Table of contents">
+          <h4 class="toc__title">In This Article</h4>
+          <ol class="toc__list">
+            <li><a href="#" class="toc__link active">Introduction</a></li>
+            <li><a href="#" class="toc__link">Core Concepts</a></li>
+            <li><a href="#" class="toc__link">Implementation</a></li>
+            <li><a href="#" class="toc__link">Best Practices</a></li>
+            <li><a href="#" class="toc__link">Conclusion</a></li>
+          </ol>
+        </nav>
+      </div>
+
+      <!-- Alert -->
+      <h3 class="ds-subhead">Alerts</h3>
+      <div class="ds-specimens ds-specimens--stack" data-klar-ds-elements="alerts" data-klar-ds-label="Alerts">
+        <div class="alert" data-klar-ds-label="Default alert">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span>This form has been submitted successfully. We'll be in touch shortly.</span>
+        </div>
+        <div class="alert alert--success" data-klar-ds-label="Success alert">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Your message has been sent! Thank you for reaching out.</span>
+        </div>
+      </div>
+
+      <!-- Separator & Divider -->
+      <h3 class="ds-subhead">Separators</h3>
+      <div class="ds-specimens ds-specimens--stack gap-6" data-klar-ds-elements="separators" data-klar-ds-label="Separators">
+        <hr class="separator" data-klar-ds-label="Separator">
+        <div class="divider-text" data-klar-ds-label="Divider with text">or continue with</div>
+      </div>
+
+      <!-- Container -->
       <h3 class="ds-subhead">Container</h3>
       <div class="ds-specimens ds-specimens--stack" data-klar-ds-elements="containers" data-klar-ds-label="Container">
         <div class="container bg-muted rounded-lg p-4" data-klar-ds-label="Default">
-          <p>Standardbredd för de flesta sektioner.</p>
+          <p class="text-sm text-muted-foreground">Default container — max-width 72rem, auto horizontal margins, responsive padding.</p>
         </div>
         <div class="container-narrow bg-muted rounded-lg p-4" data-klar-ds-label="Narrow">
-          <p>Smal bredd för text, formulär och fokuserad information.</p>
+          <p class="text-sm text-muted-foreground">Narrow container — max-width 48rem for focused reading layouts.</p>
         </div>
         <div class="container-wide bg-muted rounded-lg p-4" data-klar-ds-label="Wide">
-          <p>Bred yta för större grids och visuella sektioner.</p>
+          <p class="text-sm text-muted-foreground">Wide container — max-width 90rem for expansive layouts.</p>
         </div>
       </div>
 
+      <!-- Grid -->
       <h3 class="ds-subhead">Grid</h3>
       <div class="ds-specimens ds-specimens--stack" data-klar-ds-elements="grids" data-klar-ds-label="Grid">
-        <div class="grid grid-cols-1" data-klar-ds-label="1 column">
-          <div class="ds-mini-cell">1</div>
+        <div class="grid grid-cols-2 gap-4" data-klar-ds-label="2 columns">
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 1</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 2</div>
         </div>
-        <div class="grid grid-cols-2" data-klar-ds-label="2 columns">
-          <div class="ds-mini-cell">1</div>
-          <div class="ds-mini-cell">2</div>
+        <div class="grid grid-cols-3 gap-4" data-klar-ds-label="3 columns">
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 1</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 2</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 3</div>
         </div>
-        <div class="grid grid-cols-3" data-klar-ds-label="3 columns">
-          <div class="ds-mini-cell">1</div>
-          <div class="ds-mini-cell">2</div>
-          <div class="ds-mini-cell">3</div>
-        </div>
-        <div class="grid grid-cols-4" data-klar-ds-label="4 columns">
-          <div class="ds-mini-cell">1</div>
-          <div class="ds-mini-cell">2</div>
-          <div class="ds-mini-cell">3</div>
-          <div class="ds-mini-cell">4</div>
+        <div class="grid grid-cols-4 gap-4" data-klar-ds-label="4 columns">
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 1</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 2</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 3</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 4</div>
         </div>
       </div>
 
+      <!-- Container and Grid -->
       <h3 class="ds-subhead">Container and Grid</h3>
       <div class="ds-specimens ds-specimens--stack" data-klar-ds-elements="containers-and-grids" data-klar-ds-label="Container and Grid">
-        <div class="container grid grid-cols-1" data-klar-ds-label="Default · 1 col"><div class="ds-mini-cell">Trygg vård</div></div>
-        <div class="container grid grid-cols-2" data-klar-ds-label="Default · 2 cols"><div class="ds-mini-cell">Konsultation</div><div class="ds-mini-cell">Uppföljning</div></div>
-        <div class="container grid grid-cols-3" data-klar-ds-label="Default · 3 cols"><div class="ds-mini-cell">Analys</div><div class="ds-mini-cell">Plan</div><div class="ds-mini-cell">Resultat</div></div>
-        <div class="container grid grid-cols-4" data-klar-ds-label="Default · 4 cols"><div class="ds-mini-cell">1</div><div class="ds-mini-cell">2</div><div class="ds-mini-cell">3</div><div class="ds-mini-cell">4</div></div>
-        <div class="container-narrow grid grid-cols-1" data-klar-ds-label="Narrow · 1 col"><div class="ds-mini-cell">Patienttext</div></div>
-        <div class="container-narrow grid grid-cols-2" data-klar-ds-label="Narrow · 2 cols"><div class="ds-mini-cell">Före</div><div class="ds-mini-cell">Efter</div></div>
-        <div class="container-narrow grid grid-cols-3" data-klar-ds-label="Narrow · 3 cols"><div class="ds-mini-cell">Steg 1</div><div class="ds-mini-cell">Steg 2</div><div class="ds-mini-cell">Steg 3</div></div>
-        <div class="container-narrow grid grid-cols-4" data-klar-ds-label="Narrow · 4 cols"><div class="ds-mini-cell">A</div><div class="ds-mini-cell">B</div><div class="ds-mini-cell">C</div><div class="ds-mini-cell">D</div></div>
-        <div class="container-wide grid grid-cols-1" data-klar-ds-label="Wide · 1 col"><div class="ds-mini-cell">Bred presentation</div></div>
-        <div class="container-wide grid grid-cols-2" data-klar-ds-label="Wide · 2 cols"><div class="ds-mini-cell">Bild</div><div class="ds-mini-cell">Text</div></div>
-        <div class="container-wide grid grid-cols-3" data-klar-ds-label="Wide · 3 cols"><div class="ds-mini-cell">Hud</div><div class="ds-mini-cell">Hälsa</div><div class="ds-mini-cell">Uppföljning</div></div>
-        <div class="container-wide grid grid-cols-4" data-klar-ds-label="Wide · 4 cols"><div class="ds-mini-cell">1</div><div class="ds-mini-cell">2</div><div class="ds-mini-cell">3</div><div class="ds-mini-cell">4</div></div>
+        <div class="container grid grid-cols-2 gap-4" data-klar-ds-label="Default · 2 cols">
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 1</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 2</div>
+        </div>
+        <div class="container grid grid-cols-3 gap-4" data-klar-ds-label="Default · 3 cols">
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 1</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 2</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 3</div>
+        </div>
+        <div class="container grid grid-cols-4 gap-4" data-klar-ds-label="Default · 4 cols">
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 1</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 2</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 3</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 4</div>
+        </div>
+        <div class="container-narrow grid grid-cols-2 gap-4" data-klar-ds-label="Narrow · 2 cols">
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 1</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 2</div>
+        </div>
+        <div class="container-narrow grid grid-cols-3 gap-4" data-klar-ds-label="Narrow · 3 cols">
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 1</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 2</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 3</div>
+        </div>
+        <div class="container-narrow grid grid-cols-4 gap-4" data-klar-ds-label="Narrow · 4 cols">
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 1</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 2</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 3</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 4</div>
+        </div>
+        <div class="container-wide grid grid-cols-2 gap-4" data-klar-ds-label="Wide · 2 cols">
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 1</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 2</div>
+        </div>
+        <div class="container-wide grid grid-cols-3 gap-4" data-klar-ds-label="Wide · 3 cols">
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 1</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 2</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Column 3</div>
+        </div>
+        <div class="container-wide grid grid-cols-4 gap-4" data-klar-ds-label="Wide · 4 cols">
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 1</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 2</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 3</div>
+          <div class="bg-muted rounded-md p-4 text-sm text-center text-muted-foreground">Col 4</div>
+        </div>
       </div>
     </section>
 
+    <!-- ================================================================
+         SECTIONS
+         ================================================================ -->
     <section class="ds-block" id="sections">
-      <span class="eyebrow">Template sections</span>
-      <h2>Sektioner</h2>
-      <p class="ds-note">Varje direkt barn i gruppen “Sections” är en komplett, infogningsbar sidsektion.</p>
+      <h2>Sections</h2>
+      <p class="ds-note">Full, template-ready page-pattern sections. Each is self-contained and insertable.</p>
 
-      <div class="ds-specimens ds-specimens--stack ds-sections" data-klar-ds-elements="Sections" data-klar-ds-label="Sections">
+      <div class="ds-specimens ds-specimens--stack ds-sections" data-klar-ds-elements="Sections">
+
+        <!-- Section: Header -->
         <header class="site-header" data-klar-ds-label="Header">
-          <div class="container header-inner">
-            <a class="brand" href="index.html" aria-label="Nordisk Klinikhälsa startsida">
-              <span class="brand-mark" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-                </svg>
-              </span>
-              <span class="brand-text">
-                <span class="brand-name">Nordisk Klinikhälsa</span>
-                <span class="brand-subtitle">Specialistklinik</span>
-              </span>
+          <div class="container">
+            <a href="index.html" class="brand">
+              <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+              Inkwell
             </a>
-            <nav class="site-nav" aria-label="Huvudmeny">
-              <a class="nav-link" href="index.html">Start</a>
-              <a class="nav-link" href="behandling.html">Behandling</a>
-              <a class="nav-link" href="kontakt.html">Kontakt</a>
+            <nav class="nav" aria-label="Main navigation">
+              <a href="index.html" class="nav-link active">Home</a>
+              <a href="post.html" class="nav-link">Blog</a>
+              <a href="contact.html" class="nav-link">Contact</a>
             </nav>
             <div class="header-actions">
-              <a class="btn btn-primary btn-sm" href="kontakt.html">Boka tid</a>
+              <button class="theme-toggle" aria-label="Toggle theme" type="button">
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              </button>
+              <button class="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+              </button>
             </div>
           </div>
+          <nav class="mobile-nav" aria-label="Mobile navigation">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="post.html" class="nav-link">Blog</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+          </nav>
         </header>
 
-        <section class="hero" data-klar-ds-label="Hero">
-          <div class="container hero-inner">
-            <div class="hero-content">
-              <span class="eyebrow">Privat specialistklinik i Stockholm</span>
-              <h1>Trygg vård med personlig plan och premiumkänsla</h1>
-              <p class="lead">Hos Nordisk Klinikhälsa får du medicinsk rådgivning, behandling och uppföljning i en lugn miljö där varje beslut förklaras tydligt.</p>
-              <div class="hero-actions">
-                <a class="btn btn-primary btn-lg" href="kontakt.html">Boka konsultation</a>
-                <a class="btn btn-outline btn-lg" href="behandling.html">Se behandling</a>
-              </div>
-            </div>
-            <div class="hero-media">
-              <div class="hero-card">
-                <img class="hero-image" src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=1200&q=80" alt="Läkare samtalar med patient i modern klinikmiljö" />
-                <div class="hero-note">
-                  <strong>Individuell bedömning</strong>
-                  <span>Alltid av legitimerad behandlare med tydlig plan.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section bg-secondary" data-klar-ds-label="Clinic presentation">
-          <div class="container split">
-            <div class="media-card">
-              <img class="media-image aspect-video object-cover" src="https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=1000&q=80" alt="Behandlingsrum med skandinavisk inredning" />
-            </div>
-            <div class="stack">
-              <span class="eyebrow">Om kliniken</span>
-              <h2>Modern klinik med fokus på tillit, kvalitet och kontinuitet</h2>
-              <p class="lead">Vi kombinerar evidensbaserad vård med ett varmt bemötande och en tydlig process från första kontakt till uppföljning.</p>
-              <ul class="feature-list">
-                <li>Legitimerade behandlare och strukturerad journalföring.</li>
-                <li>Diskreta lokaler centralt med hög integritet.</li>
-                <li>Rådgivning som utgår från dina behov och mål.</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" data-klar-ds-label="Services grid">
+        <!-- Section: Hero -->
+        <section class="section py-16 lg:py-24" data-klar-ds-label="Hero">
           <div class="container">
-            <div class="section-header section-header--center mb-8">
-              <span class="eyebrow">Behandlingar</span>
-              <h2>Vård och behandlingar för långsiktig hälsa</h2>
-              <p>Våra tjänster börjar med konsultation och avslutas med tydliga råd för resultat som håller över tid.</p>
-            </div>
-            <div class="grid md:grid-cols-3">
-              <article class="card service-card">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">01</span>
-                  <h3 class="card__title">Hudkonsultation</h3>
-                </div>
-                <div class="card__body">
-                  <p>Analys, behandlingsplan och medicinsk rådgivning för hudhälsa.</p>
-                </div>
-              </article>
-              <article class="card service-card">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">02</span>
-                  <h3 class="card__title">Återbesök</h3>
-                </div>
-                <div class="card__body">
-                  <p>Uppföljning av resultat, justering av plan och fortsatt stöd.</p>
-                </div>
-              </article>
-              <article class="card service-card">
-                <div class="card__header">
-                  <span class="card__icon" aria-hidden="true">03</span>
-                  <h3 class="card__title">Förebyggande vård</h3>
-                </div>
-                <div class="card__body">
-                  <p>Rådgivning och rutiner för trygg, långsiktig hälsa och välmående.</p>
-                </div>
-              </article>
+            <div class="hero">
+              <div class="hero__eyebrow">
+                <span class="badge badge-primary">Welcome to Inkwell</span>
+              </div>
+              <h1 class="hero__title">Thoughts on design, code, and the craft of building for the web</h1>
+              <p class="hero__description">A blog exploring modern web development, design systems, creative tooling, and the intersection of technology and human experience.</p>
+              <div class="hero__actions">
+                <a href="post.html" class="btn btn-primary btn-lg">Start Reading</a>
+                <a href="contact.html" class="btn btn-outline btn-lg">Get in Touch</a>
+              </div>
             </div>
           </div>
         </section>
 
-        <section class="section bg-muted" data-klar-ds-label="Why choose us">
-          <div class="container split">
+        <!-- Section: Featured Post -->
+        <section class="section py-12 lg:py-16" data-klar-ds-label="Featured Post">
+          <div class="container">
             <div class="section-header">
-              <span class="eyebrow">Varför välja oss</span>
-              <h2>Medicinsk trygghet möter skandinavisk omtanke</h2>
-              <p>Vi arbetar transparent, noggrant och med respekt för varje patients integritet.</p>
+              <h2 class="section-header__title">Featured Article</h2>
+              <p class="section-header__description">Our latest deep dive into the world of web development.</p>
             </div>
-            <div class="stat-grid">
-              <div class="stat">
-                <span class="stat__value">15+</span>
-                <span class="stat__label">års samlad klinisk erfarenhet</span>
+            <a href="post.html" class="featured-card">
+              <img class="featured-card__image" src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=500&fit=crop" alt="Code on a screen" loading="lazy">
+              <div class="featured-card__content">
+                <span class="badge badge-primary">Featured</span>
+                <h2 class="featured-card__title">The Future of Web Development</h2>
+                <p class="featured-card__excerpt">Exploring how modern tooling, AI assistance, and design systems are reshaping how we build for the web — and what it means for developers in the next decade.</p>
+                <div class="author-block">
+                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Alex Rivera" class="avatar avatar-sm" loading="lazy">
+                  <div class="author-block__info">
+                    <span class="author-block__name">Alex Rivera</span>
+                    <span class="author-block__detail">Mar 20, 2025 · 8 min read</span>
+                  </div>
+                </div>
               </div>
-              <div class="stat">
-                <span class="stat__value">24 h</span>
-                <span class="stat__label">svarstid på förfrågningar</span>
-              </div>
-              <div class="stat">
-                <span class="stat__value">100%</span>
-                <span class="stat__label">individuella behandlingsplaner</span>
-              </div>
-            </div>
+            </a>
           </div>
         </section>
 
-        <section class="section" data-klar-ds-label="Testimonials">
+        <!-- Section: Post Grid -->
+        <section class="section py-12 lg:py-16" data-klar-ds-label="Post Grid">
           <div class="container">
-            <div class="section-header section-header--center mb-8">
-              <span class="eyebrow">Patientröster</span>
-              <h2>Förtroende skapas i varje möte</h2>
+            <div class="section-header">
+              <h2 class="section-header__title">Latest Articles</h2>
+              <p class="section-header__description">Fresh perspectives on design, development, and productivity.</p>
             </div>
-            <div class="grid md:grid-cols-3">
-              <article class="testimonial">
-                <blockquote>“Professionellt, lugnt och väldigt tydligt. Jag visste exakt vad som skulle hända.”</blockquote>
-                <div class="testimonial__author">
-                  <span class="avatar" aria-hidden="true">EK</span>
-                  <div><strong>Erik K.</strong><p class="text-sm">Patient</p></div>
+            <div class="post-grid">
+              <a href="post.html" class="card card--link">
+                <img class="card__image" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=340&fit=crop" alt="Writing at a desk" loading="lazy">
+                <div class="card__body">
+                  <div class="mb-2"><span class="badge badge-primary">Design</span></div>
+                  <h3 class="card__title">Building Better User Interfaces</h3>
+                  <p class="card__excerpt">Learn the principles behind intuitive, accessible interfaces that users actually enjoy using every day.</p>
                 </div>
-              </article>
-              <article class="testimonial">
-                <blockquote>“Kliniken känns exklusiv utan att vara opersonlig. Jag fick ett fantastiskt bemötande.”</blockquote>
-                <div class="testimonial__author">
-                  <span class="avatar" aria-hidden="true">MS</span>
-                  <div><strong>Maria S.</strong><p class="text-sm">Patient</p></div>
+                <div class="card__footer">
+                  <span class="card__meta">Mar 15, 2025</span>
+                  <span class="card__meta">5 min read</span>
                 </div>
-              </article>
-              <article class="testimonial">
-                <blockquote>“Jag uppskattade uppföljningen och att planen anpassades efter mina behov.”</blockquote>
-                <div class="testimonial__author">
-                  <span class="avatar" aria-hidden="true">JN</span>
-                  <div><strong>Jonas N.</strong><p class="text-sm">Patient</p></div>
+              </a>
+              <a href="post.html" class="card card--link">
+                <img class="card__image" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=340&fit=crop" alt="Code on screen" loading="lazy">
+                <div class="card__body">
+                  <div class="mb-2"><span class="badge badge-secondary">Development</span></div>
+                  <h3 class="card__title">CSS Custom Properties Deep Dive</h3>
+                  <p class="card__excerpt">How to architect a token-based styling system using nothing but native CSS variables and semantic naming.</p>
                 </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" data-klar-ds-label="Treatment information">
-          <div class="container-narrow prose">
-            <h1>Hudkonsultation och individuell behandlingsplan</h1>
-            <p>En hudkonsultation är rätt första steg när du vill förstå hudens behov, få medicinsk vägledning eller planera en säker behandling. Besöket anpassas efter din historik, dina mål och vad som är långsiktigt hållbart.</p>
-            <h2>Vad ingår?</h2>
-            <p>Vi går igenom hudstatus, livsstilsfaktorer, tidigare behandlingar och eventuella läkemedel. Därefter får du en tydlig rekommendation med prioriterade åtgärder.</p>
-            <ul>
-              <li>Medicinsk bedömning av legitimerad behandlare.</li>
-              <li>Personlig plan med behandlingsalternativ och förväntad tidslinje.</li>
-              <li>Råd för egenvård och uppföljning.</li>
-            </ul>
-            <blockquote>Målet är att du ska känna dig informerad, trygg och delaktig i varje beslut.</blockquote>
-          </div>
-        </section>
-
-        <section class="section bg-secondary" data-klar-ds-label="Process steps">
-          <div class="container">
-            <div class="section-header section-header--center mb-8">
-              <span class="eyebrow">Process</span>
-              <h2>Så går ett besök till</h2>
-            </div>
-            <div class="step-list">
-              <article class="step">
-                <div class="step__content">
-                  <h3>Bokning och förberedelse</h3>
-                  <p>Du beskriver kort vad du söker hjälp för och får information inför besöket.</p>
+                <div class="card__footer">
+                  <span class="card__meta">Mar 10, 2025</span>
+                  <span class="card__meta">7 min read</span>
                 </div>
-              </article>
-              <article class="step">
-                <div class="step__content">
-                  <h3>Konsultation</h3>
-                  <p>Vi gör en noggrann bedömning, svarar på frågor och går igenom möjliga alternativ.</p>
+              </a>
+              <a href="post.html" class="card card--link">
+                <img class="card__image" src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=340&fit=crop" alt="Notepad and planning" loading="lazy">
+                <div class="card__body">
+                  <div class="mb-2"><span class="badge badge-outline">Productivity</span></div>
+                  <h3 class="card__title">The Art of Focused Work</h3>
+                  <p class="card__excerpt">Strategies for deep work in an age of constant distraction — from time-boxing to digital minimalism.</p>
                 </div>
-              </article>
-              <article class="step">
-                <div class="step__content">
-                  <h3>Plan och uppföljning</h3>
-                  <p>Du får en konkret plan och vi följer upp resultatet vid behov.</p>
+                <div class="card__footer">
+                  <span class="card__meta">Mar 5, 2025</span>
+                  <span class="card__meta">4 min read</span>
                 </div>
-              </article>
+              </a>
             </div>
           </div>
         </section>
 
-        <section class="section" data-klar-ds-label="FAQ">
+        <!-- Section: Text Content -->
+        <section class="section py-12 lg:py-16" data-klar-ds-label="Text content">
           <div class="container-narrow">
-            <div class="section-header section-header--center mb-8">
-              <span class="eyebrow">Frågor och svar</span>
-              <h2>Vanliga frågor inför behandling</h2>
-            </div>
-            <div class="faq">
-              <div class="accordion is-open">
-                <button class="accordion__button" type="button" aria-expanded="true">
-                  Behöver jag konsultation först?
-                  <span class="accordion__icon" aria-hidden="true">+</span>
-                </button>
-                <div class="accordion__panel">
-                  <div class="accordion__content">
-                    <div class="accordion__content-inner">
-                      <p>Ja, vi börjar med konsultation för att säkerställa att behandlingen är lämplig och trygg för dig.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion">
-                <button class="accordion__button" type="button" aria-expanded="false">
-                  Hur snabbt får jag svar?
-                  <span class="accordion__icon" aria-hidden="true">+</span>
-                </button>
-                <div class="accordion__panel">
-                  <div class="accordion__content">
-                    <div class="accordion__content-inner">
-                      <p>Vi återkommer normalt inom en arbetsdag efter att du skickat en förfrågan.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" data-klar-ds-label="Text content">
-          <div class="container-narrow prose">
-            <h1>Trygg information för patienter</h1>
-            <p>Vi vill att varje patient ska förstå varför en behandling rekommenderas, vilka alternativ som finns och vad som händer efter besöket.</p>
-            <h2>Vår vårdfilosofi</h2>
-            <p>Vården ska vara personlig, medicinskt grundad och genomföras i en miljö där du känner dig trygg. Därför arbetar vi med tydliga rutiner och kontinuerlig uppföljning.</p>
-            <h3>Det kan du förvänta dig</h3>
-            <ol>
-              <li>Ett lyhört första samtal.</li>
-              <li>En tydlig plan med realistiska mål.</li>
-              <li>Råd och uppföljning efter besöket.</li>
-            </ol>
-            <blockquote>God vård handlar lika mycket om kommunikation som om behandling.</blockquote>
-          </div>
-        </section>
-
-        <section class="section" data-klar-ds-label="Contact">
-          <div class="container split">
-            <div class="stack">
-              <span class="eyebrow">Kontakt</span>
-              <h2>Välkommen att boka konsultation</h2>
-              <p class="lead">Fyll i formuläret så återkommer vi med förslag på tid och rätt nästa steg.</p>
-              <ul class="contact-list">
-                <li class="contact-item">
-                  <span class="contact-item__icon" aria-hidden="true">☎</span>
-                  <div><strong>Telefon</strong><p>08-123 45 67</p></div>
-                </li>
-                <li class="contact-item">
-                  <span class="contact-item__icon" aria-hidden="true">@</span>
-                  <div><strong>E-post</strong><p>kontakt@nordiskklinikhalsa.se</p></div>
-                </li>
+            <div class="prose">
+              <h2>Writing for the Modern Web</h2>
+              <p>The web has always been a text-first medium. Even as we layer on rich media, animation, and interactivity, <strong>clear writing</strong> remains the foundation of every great website.</p>
+              <p>Good web writing is concise, scannable, and structured. It respects the reader's time and guides them through content with clear headings, short paragraphs, and purposeful links.</p>
+              <h3>Principles to Follow</h3>
+              <ul>
+                <li>Lead with the most important information</li>
+                <li>Use headings to create a scannable hierarchy</li>
+                <li>Keep paragraphs focused on a single idea</li>
+                <li>Link meaningfully — <a href="#">anchor text should describe the destination</a></li>
               </ul>
-            </div>
-            <form class="form card p-6">
-              <div class="field">
-                <label class="label" for="section-name">Namn</label>
-                <input class="input" id="section-name" name="name" type="text" autocomplete="name" />
-              </div>
-              <div class="field">
-                <label class="label" for="section-email">E-post</label>
-                <input class="input" id="section-email" name="email" type="email" autocomplete="email" />
-              </div>
-              <div class="field">
-                <label class="label" for="section-message">Meddelande</label>
-                <textarea class="textarea" id="section-message" name="message"></textarea>
-              </div>
-              <button class="btn btn-primary" type="submit">Skicka förfrågan</button>
-            </form>
-          </div>
-        </section>
-
-        <section class="section bg-secondary" data-klar-ds-label="Map and hours">
-          <div class="container grid md:grid-cols-2">
-            <div class="map-placeholder">
-              <div>
-                <span class="map-pin" aria-hidden="true">⌖</span>
-                <strong>Karta</strong>
-                <p>Platshållare för inbäddad karta</p>
-              </div>
-            </div>
-            <div class="card p-6">
-              <h3>Öppettider</h3>
-              <ul class="hours mt-4">
-                <li><strong>Måndag–torsdag</strong><span>08.00–17.00</span></li>
-                <li><strong>Fredag</strong><span>08.00–15.00</span></li>
-                <li><strong>Lördag–söndag</strong><span>Stängt</span></li>
-              </ul>
+              <blockquote>Clear writing is clear thinking made visible. — William Wheeler</blockquote>
+              <p>When your content is well-structured, it works for every reader — whether they're scanning on a phone, reading carefully on a laptop, or navigating with a screen reader.</p>
             </div>
           </div>
         </section>
 
-        <section class="section" data-klar-ds-label="Newsletter CTA">
+        <!-- Section: Newsletter CTA -->
+        <section class="section py-12 lg:py-16" data-klar-ds-label="Newsletter CTA">
           <div class="container">
-            <div class="cta">
-              <div class="grid md:grid-cols-2 md:items-center">
-                <div class="stack">
-                  <span class="badge badge-accent">Redo för nästa steg?</span>
-                  <h2>Boka en trygg konsultation med vårt kliniska team</h2>
-                  <p>Vi hjälper dig att förstå alternativen och välja en plan som passar dina behov.</p>
+            <div class="cta-block">
+              <h2 class="cta-block__title">Stay in the loop</h2>
+              <p class="cta-block__description">Get the latest articles delivered straight to your inbox. No spam, unsubscribe anytime.</p>
+              <form class="cta-block__form" action="#newsletter" method="post">
+                <input type="email" class="input" placeholder="you@example.com" aria-label="Email address" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Contact -->
+        <section class="section py-12 lg:py-16" data-klar-ds-label="Contact">
+          <div class="container">
+            <div class="section-header section-header--center">
+              <h2 class="section-header__title">Get in Touch</h2>
+              <p class="section-header__description">Have a question or want to collaborate? We'd love to hear from you.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <form class="flex flex-col gap-4" action="#contact" method="post" novalidate>
+                <div class="field">
+                  <label class="label" for="sec-name">Name</label>
+                  <input type="text" id="sec-name" class="input" placeholder="Your name" required>
                 </div>
-                <div class="cluster md:justify-between">
-                  <a class="btn btn-secondary btn-lg" href="kontakt.html">Boka tid</a>
-                  <a class="btn btn-outline btn-lg" href="behandling.html">Läs om behandling</a>
+                <div class="field">
+                  <label class="label" for="sec-email">Email</label>
+                  <input type="email" id="sec-email" class="input" placeholder="you@example.com" required>
+                </div>
+                <div class="field">
+                  <label class="label" for="sec-msg">Message</label>
+                  <textarea id="sec-msg" class="textarea" placeholder="What's on your mind?" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+              </form>
+              <div class="contact-info">
+                <div class="contact-info__item">
+                  <div class="contact-info__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  </div>
+                  <div>
+                    <div class="contact-info__label">Email</div>
+                    <div class="contact-info__value">hello@inkwell.blog</div>
+                  </div>
+                </div>
+                <div class="contact-info__item">
+                  <div class="contact-info__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <div>
+                    <div class="contact-info__label">Location</div>
+                    <div class="contact-info__value">San Francisco, CA</div>
+                  </div>
+                </div>
+                <div class="contact-info__item">
+                  <div class="contact-info__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </div>
+                  <div>
+                    <div class="contact-info__label">Availability</div>
+                    <div class="contact-info__value">Mon–Fri, 9 AM – 5 PM PST</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
+        <!-- Section: Footer -->
         <footer class="site-footer" data-klar-ds-label="Footer">
-          <div class="container footer-inner">
-            <div class="footer-grid">
-              <div class="stack">
-                <a class="brand" href="index.html">
-                  <span class="brand-mark" aria-hidden="true">+</span>
-                  <span class="brand-text">
-                    <span class="brand-name">Nordisk Klinikhälsa</span>
-                    <span class="brand-subtitle">Specialistklinik</span>
-                  </span>
+          <div class="container">
+            <div class="footer-top">
+              <div class="footer-brand">
+                <a href="index.html" class="brand">
+                  <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+                  Inkwell
                 </a>
-                <p>Modern, personlig och trygg vård i en premium klinikmiljö.</p>
+                <p class="footer-brand__description">A blog about design, development, and the craft of building thoughtful digital experiences.</p>
               </div>
-              <div class="stack">
-                <h3 class="text-base">Sidor</h3>
-                <a class="footer-link" href="index.html">Start</a>
-                <a class="footer-link" href="behandling.html">Behandling</a>
-                <a class="footer-link" href="kontakt.html">Kontakt</a>
+              <div>
+                <h4 class="footer-column__title">Pages</h4>
+                <ul class="footer-column__list">
+                  <li><a href="index.html" class="footer-link">Home</a></li>
+                  <li><a href="post.html" class="footer-link">Blog</a></li>
+                  <li><a href="contact.html" class="footer-link">Contact</a></li>
+                </ul>
               </div>
-              <div class="stack">
-                <h3 class="text-base">Kontakt</h3>
-                <a class="footer-link" href="tel:+4681234567">08-123 45 67</a>
-                <a class="footer-link" href="mailto:kontakt@nordiskklinikhalsa.se">kontakt@nordiskklinikhalsa.se</a>
-              </div>
-              <div class="stack">
-                <h3 class="text-base">Besök</h3>
-                <p>Birger Jarlsgatan 22<br />114 34 Stockholm</p>
+              <div>
+                <h4 class="footer-column__title">Connect</h4>
+                <ul class="footer-column__list">
+                  <li><a href="#" class="footer-link">Twitter</a></li>
+                  <li><a href="#" class="footer-link">GitHub</a></li>
+                  <li><a href="#" class="footer-link">LinkedIn</a></li>
+                </ul>
               </div>
             </div>
             <div class="footer-bottom">
-              <span>© 2026 Nordisk Klinikhälsa</span>
-              <span>Integritet · Tillgänglighet · Kvalitet</span>
+              <span>&copy; 2025 Inkwell. All rights reserved.</span>
+              <div class="footer-socials">
+                <a href="#" class="footer-social-link" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+                <a href="#" class="footer-social-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+                <a href="#" class="footer-social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              </div>
             </div>
           </div>
         </footer>
-      </div>
+
+      </div><!-- /data-klar-ds-elements="Sections" -->
     </section>
+
   </main>
 
+  <!-- ====================================================================
+       PAGE FOOTER
+       ==================================================================== -->
   <footer class="site-footer">
-    <div class="container footer-inner">
+    <div class="container">
       <div class="footer-bottom">
-        <span>Designsystem för Nordisk Klinikhälsa</span>
-        <a class="footer-link" href="#top">Till toppen</a>
+        <span>&copy; 2025 Inkwell Design System. Built with tokens, utilities, and semantic components.</span>
       </div>
     </div>
   </footer>
 
+  <!-- ====================================================================
+       FOUNDATION UTILITY MANIFEST
+       ==================================================================== -->
   <!-- Foundation utility manifest for the Klar editor.
        Every value references a class that exists in style.css. -->
   <script type="application/json" data-klar-ds>
-    {
-      "classes": {
-        "Background color": [
-          { "label": "Page", "value": "bg-background" },
-          { "label": "Foreground", "value": "bg-foreground" },
-          { "label": "Primary", "value": "bg-primary" },
-          { "label": "Primary soft", "value": "bg-primary-soft" },
-          { "label": "Secondary", "value": "bg-secondary" },
-          { "label": "Muted", "value": "bg-muted" },
-          { "label": "Accent", "value": "bg-accent" },
-          { "label": "Card", "value": "bg-card" },
-          { "label": "Destructive", "value": "bg-destructive" },
-          { "label": "Transparent", "value": "bg-transparent" }
-        ],
-        "Text color": [
-          { "label": "Body", "value": "text-foreground" },
-          { "label": "On foreground", "value": "text-background" },
-          { "label": "Primary", "value": "text-primary" },
-          { "label": "On primary", "value": "text-primary-foreground" },
-          { "label": "On secondary", "value": "text-secondary-foreground" },
-          { "label": "Muted", "value": "text-muted-foreground" },
-          { "label": "Accent", "value": "text-accent" },
-          { "label": "On accent", "value": "text-accent-foreground" },
-          { "label": "Destructive", "value": "text-destructive" },
-          { "label": "White", "value": "text-white" },
-          { "label": "Black", "value": "text-black" }
-        ],
-        "Border": [
-          { "label": "All none", "value": "border-0" },
-          { "label": "All small", "value": "border" },
-          { "label": "All medium", "value": "border-2" },
-          { "label": "Top small", "value": "border-t" },
-          { "label": "Bottom small", "value": "border-b" },
-          { "label": "Left small", "value": "border-l" },
-          { "label": "Right small", "value": "border-r" }
-        ],
-        "Border color": [
-          { "label": "Muted", "value": "border-muted" },
-          { "label": "Foreground", "value": "border-foreground" },
-          { "label": "Primary", "value": "border-primary" },
-          { "label": "Transparent", "value": "border-transparent" }
-        ],
-        "Font size": [
-          { "label": "XS", "value": "text-xs" },
-          { "label": "Small", "value": "text-sm" },
-          { "label": "Base", "value": "text-base" },
-          { "label": "Large", "value": "text-lg" },
-          { "label": "XL", "value": "text-xl" },
-          { "label": "2XL", "value": "text-2xl" },
-          { "label": "3XL", "value": "text-3xl" },
-          { "label": "4XL", "value": "text-4xl" },
-          { "label": "5XL", "value": "text-5xl" },
-          { "label": "4XL", "value": "md:text-4xl" },
-          { "label": "5XL", "value": "lg:text-5xl" }
-        ],
-        "Font weight": [
-          { "label": "Normal", "value": "font-normal" },
-          { "label": "Medium", "value": "font-medium" },
-          { "label": "Semibold", "value": "font-semibold" },
-          { "label": "Bold", "value": "font-bold" }
-        ],
-        "Line height": [
-          { "label": "Tight", "value": "leading-tight" },
-          { "label": "Snug", "value": "leading-snug" },
-          { "label": "Normal", "value": "leading-normal" },
-          { "label": "Relaxed", "value": "leading-relaxed" }
-        ],
-        "Letter spacing": [
-          { "label": "Tight", "value": "tracking-tight" },
-          { "label": "Normal", "value": "tracking-normal" },
-          { "label": "Wide", "value": "tracking-wide" },
-          { "label": "Wider", "value": "tracking-wider" }
-        ],
-        "Text": [
-          { "label": "Align left", "value": "text-left" },
-          { "label": "Align center", "value": "text-center" },
-          { "label": "Align right", "value": "text-right" },
-          { "label": "Uppercase", "value": "uppercase" },
-          { "label": "Italic", "value": "italic" },
-          { "label": "Underline", "value": "underline" },
-          { "label": "Truncate", "value": "truncate" },
-          { "label": "Sans font", "value": "font-sans" },
-          { "label": "Serif font", "value": "font-serif" },
-          { "label": "Align left", "value": "md:text-left" },
-          { "label": "Align center", "value": "md:text-center" },
-          { "label": "Align left", "value": "lg:text-left" }
-        ],
-        "Typography": [
-          { "label": "Display", "value": "text-5xl font-bold tracking-tight leading-tight" },
-          { "label": "Heading 1", "value": "text-4xl font-bold tracking-tight leading-tight" },
-          { "label": "Heading 2", "value": "text-3xl font-bold leading-snug" },
-          { "label": "Heading 3", "value": "text-2xl font-semibold leading-snug" },
-          { "label": "Heading 4", "value": "text-xl font-semibold leading-snug" },
-          { "label": "Lead", "value": "text-xl font-normal leading-relaxed" },
-          { "label": "Body", "value": "text-base font-normal leading-normal" },
-          { "label": "Small", "value": "text-sm font-normal leading-normal" },
-          { "label": "Meta", "value": "text-xs font-medium uppercase tracking-wide" }
-        ],
-        "Display": [
-          { "label": "Block", "value": "block" },
-          { "label": "Inline block", "value": "inline-block" },
-          { "label": "Inline", "value": "inline" },
-          { "label": "Flex", "value": "flex" },
-          { "label": "Inline flex", "value": "inline-flex" },
-          { "label": "Grid", "value": "grid" },
-          { "label": "Hidden", "value": "hidden" },
-          { "label": "Block", "value": "md:block" },
-          { "label": "Flex", "value": "md:flex" },
-          { "label": "Grid", "value": "md:grid" },
-          { "label": "Hidden", "value": "md:hidden" },
-          { "label": "Block", "value": "lg:block" },
-          { "label": "Flex", "value": "lg:flex" },
-          { "label": "Grid", "value": "lg:grid" },
-          { "label": "Hidden", "value": "lg:hidden" }
-        ],
-        "Flexbox": [
-          { "label": "Row", "value": "flex-row" },
-          { "label": "Column", "value": "flex-col" },
-          { "label": "Wrap", "value": "flex-wrap" },
-          { "label": "Flex 1", "value": "flex-1" },
-          { "label": "No shrink", "value": "flex-shrink-0" },
-          { "label": "Items start", "value": "items-start" },
-          { "label": "Items center", "value": "items-center" },
-          { "label": "Items end", "value": "items-end" },
-          { "label": "Justify start", "value": "justify-start" },
-          { "label": "Justify center", "value": "justify-center" },
-          { "label": "Justify between", "value": "justify-between" },
-          { "label": "Justify end", "value": "justify-end" },
-          { "label": "Row", "value": "md:flex-row" },
-          { "label": "Items center", "value": "md:items-center" },
-          { "label": "Justify between", "value": "md:justify-between" }
-        ],
-        "Grid columns": [
-          { "label": "1 column", "value": "grid-cols-1" },
-          { "label": "2 columns", "value": "grid-cols-2" },
-          { "label": "3 columns", "value": "grid-cols-3" },
-          { "label": "4 columns", "value": "grid-cols-4" },
-          { "label": "Span 1", "value": "col-span-1" },
-          { "label": "Span 2", "value": "col-span-2" },
-          { "label": "Span full", "value": "col-span-full" },
-          { "label": "2 columns", "value": "md:grid-cols-2" },
-          { "label": "3 columns", "value": "md:grid-cols-3" },
-          { "label": "Span 2", "value": "md:col-span-2" },
-          { "label": "2 columns", "value": "lg:grid-cols-2" },
-          { "label": "3 columns", "value": "lg:grid-cols-3" },
-          { "label": "4 columns", "value": "lg:grid-cols-4" },
-          { "label": "Span 2", "value": "lg:col-span-2" }
-        ],
-        "Gap": [
-          { "label": "3XS", "value": "gap-1" },
-          { "label": "2XS", "value": "gap-2" },
-          { "label": "XS", "value": "gap-3" },
-          { "label": "Small", "value": "gap-4" },
-          { "label": "Medium", "value": "gap-6" },
-          { "label": "Large", "value": "gap-8" },
-          { "label": "XL", "value": "gap-10" },
-          { "label": "2XL", "value": "gap-12" },
-          { "label": "Large", "value": "md:gap-8" },
-          { "label": "2XL", "value": "lg:gap-12" }
-        ],
-        "Margin": [
-          { "label": "All none", "value": "m-0" },
-          { "label": "Center horizontal", "value": "mx-auto" },
-          { "label": "Horizontal none", "value": "mx-0" },
-          { "label": "Vertical none", "value": "my-0" },
-          { "label": "Vertical small", "value": "my-4" },
-          { "label": "Vertical medium", "value": "my-8" },
-          { "label": "Vertical large", "value": "my-12" },
-          { "label": "Vertical XL", "value": "my-16" },
-          { "label": "Top none", "value": "mt-0" },
-          { "label": "Top 2XS", "value": "mt-2" },
-          { "label": "Top small", "value": "mt-4" },
-          { "label": "Top medium", "value": "mt-6" },
-          { "label": "Top large", "value": "mt-8" },
-          { "label": "Top XL", "value": "mt-12" },
-          { "label": "Bottom none", "value": "mb-0" },
-          { "label": "Bottom 2XS", "value": "mb-2" },
-          { "label": "Bottom small", "value": "mb-4" },
-          { "label": "Bottom medium", "value": "mb-6" },
-          { "label": "Bottom large", "value": "mb-8" },
-          { "label": "Bottom XL", "value": "mb-12" }
-        ],
-        "Padding": [
-          { "label": "All none", "value": "p-0" },
-          { "label": "All XS", "value": "p-3" },
-          { "label": "All small", "value": "p-4" },
-          { "label": "All medium", "value": "p-6" },
-          { "label": "All large", "value": "p-8" },
-          { "label": "All XL", "value": "p-10" },
-          { "label": "All 2XL", "value": "p-12" },
-          { "label": "Horizontal none", "value": "px-0" },
-          { "label": "Horizontal XS", "value": "px-3" },
-          { "label": "Horizontal small", "value": "px-4" },
-          { "label": "Horizontal medium", "value": "px-6" },
-          { "label": "Horizontal large", "value": "px-8" },
-          { "label": "Vertical none", "value": "py-0" },
-          { "label": "Vertical 2XS", "value": "py-2" },
-          { "label": "Vertical XS", "value": "py-3" },
-          { "label": "Vertical small", "value": "py-4" },
-          { "label": "Vertical medium", "value": "py-6" },
-          { "label": "Vertical large", "value": "py-8" },
-          { "label": "Vertical XL", "value": "py-12" },
-          { "label": "Vertical 2XL", "value": "py-16" },
-          { "label": "Vertical 3XL", "value": "py-20" },
-          { "label": "Top none", "value": "pt-0" },
-          { "label": "Top large", "value": "pt-8" },
-          { "label": "Top XL", "value": "pt-12" },
-          { "label": "Bottom none", "value": "pb-0" },
-          { "label": "Bottom large", "value": "pb-8" },
-          { "label": "Bottom XL", "value": "pb-12" },
-          { "label": "Bottom 2XL", "value": "pb-16" },
-          { "label": "Vertical 2XL", "value": "md:py-16" },
-          { "label": "All large", "value": "md:p-8" },
-          { "label": "Vertical 3XL", "value": "lg:py-20" },
-          { "label": "All XL", "value": "lg:p-10" }
-        ],
-        "Sizing": [
-          { "label": "Width full", "value": "w-full" },
-          { "label": "Height full", "value": "h-full" },
-          { "label": "Min height screen", "value": "min-h-screen" },
-          { "label": "Min height header", "value": "min-h-header" },
-          { "label": "Max width XL", "value": "max-w-xl" },
-          { "label": "Max width 2XL", "value": "max-w-2xl" },
-          { "label": "Max width 3XL", "value": "max-w-3xl" },
-          { "label": "Max width 4XL", "value": "max-w-4xl" },
-          { "label": "Max width 6XL", "value": "max-w-6xl" },
-          { "label": "Max width 7XL", "value": "max-w-7xl" }
-        ],
-        "Radius": [
-          { "label": "None", "value": "rounded-none" },
-          { "label": "Small", "value": "rounded-sm" },
-          { "label": "Medium", "value": "rounded-md" },
-          { "label": "Large", "value": "rounded-lg" },
-          { "label": "XL", "value": "rounded-xl" },
-          { "label": "2XL", "value": "rounded-2xl" },
-          { "label": "Full", "value": "rounded-full" }
-        ],
-        "Shadows": [
-          { "label": "None", "value": "shadow-none" },
-          { "label": "Small", "value": "shadow-sm" },
-          { "label": "Medium", "value": "shadow-md" },
-          { "label": "Large", "value": "shadow-lg" },
-          { "label": "Glow", "value": "shadow-glow" }
-        ],
-        "Position": [
-          { "label": "Relative", "value": "relative" },
-          { "label": "Absolute", "value": "absolute" },
-          { "label": "Sticky", "value": "sticky" },
-          { "label": "Fixed", "value": "fixed" },
-          { "label": "Inset 0", "value": "inset-0" },
-          { "label": "Top 0", "value": "top-0" },
-          { "label": "Right 0", "value": "right-0" },
-          { "label": "Bottom 0", "value": "bottom-0" },
-          { "label": "Left 0", "value": "left-0" },
-          { "label": "Z 10", "value": "z-10" },
-          { "label": "Z 20", "value": "z-20" }
-        ],
-        "Object fit & aspect": [
-          { "label": "Object cover", "value": "object-cover" },
-          { "label": "Aspect square", "value": "aspect-square" },
-          { "label": "Aspect video", "value": "aspect-video" }
-        ],
-        "Effects": [
-          { "label": "Overflow hidden", "value": "overflow-hidden" },
-          { "label": "Transition", "value": "transition" },
-          { "label": "Cursor pointer", "value": "cursor-pointer" },
-          { "label": "Screen-reader only", "value": "sr-only" }
-        ],
-        "Rich text": [
-          { "label": "Prose", "value": "prose" }
-        ],
-        "Container": [
-          { "label": "Default", "value": "container" },
-          { "label": "Narrow", "value": "container-narrow" },
-          { "label": "Wide", "value": "container-wide" }
-        ],
-        "Grid": [
-          { "label": "1 column", "value": "grid grid-cols-1" },
-          { "label": "2 columns", "value": "grid grid-cols-2" },
-          { "label": "3 columns", "value": "grid grid-cols-3" },
-          { "label": "4 columns", "value": "grid grid-cols-4" }
-        ],
-        "Container and Grid": [
-          { "label": "Default · 1 col", "value": "container grid grid-cols-1" },
-          { "label": "Default · 2 cols", "value": "container grid grid-cols-2" },
-          { "label": "Default · 3 cols", "value": "container grid grid-cols-3" },
-          { "label": "Default · 4 cols", "value": "container grid grid-cols-4" },
-          { "label": "Narrow · 1 col", "value": "container-narrow grid grid-cols-1" },
-          { "label": "Narrow · 2 cols", "value": "container-narrow grid grid-cols-2" },
-          { "label": "Narrow · 3 cols", "value": "container-narrow grid grid-cols-3" },
-          { "label": "Narrow · 4 cols", "value": "container-narrow grid grid-cols-4" },
-          { "label": "Wide · 1 col", "value": "container-wide grid grid-cols-1" },
-          { "label": "Wide · 2 cols", "value": "container-wide grid grid-cols-2" },
-          { "label": "Wide · 3 cols", "value": "container-wide grid grid-cols-3" },
-          { "label": "Wide · 4 cols", "value": "container-wide grid grid-cols-4" }
-        ]
-      }
-    }
+{
+  "classes": {
+    "Background color": [
+      { "label": "Page", "value": "bg-background" },
+      { "label": "Foreground", "value": "bg-foreground" },
+      { "label": "Brand", "value": "bg-primary" },
+      { "label": "Secondary", "value": "bg-secondary" },
+      { "label": "Muted", "value": "bg-muted" },
+      { "label": "Accent", "value": "bg-accent" },
+      { "label": "Card surface", "value": "bg-card" },
+      { "label": "Destructive", "value": "bg-destructive" },
+      { "label": "Transparent", "value": "bg-transparent" }
+    ],
+    "Text color": [
+      { "label": "Body", "value": "text-foreground" },
+      { "label": "On foreground", "value": "text-background" },
+      { "label": "Primary", "value": "text-primary" },
+      { "label": "On brand", "value": "text-primary-foreground" },
+      { "label": "On secondary", "value": "text-secondary-foreground" },
+      { "label": "Muted", "value": "text-muted-foreground" },
+      { "label": "On accent", "value": "text-accent-foreground" },
+      { "label": "Destructive", "value": "text-destructive" },
+      { "label": "White", "value": "text-white" },
+      { "label": "Black", "value": "text-black" }
+    ],
+    "Border": [
+      { "label": "All none", "value": "border-0" },
+      { "label": "All small", "value": "border" },
+      { "label": "All medium", "value": "border-2" },
+      { "label": "All large", "value": "border-4" },
+      { "label": "Horizontal none", "value": "border-x-0" },
+      { "label": "Horizontal small", "value": "border-x" },
+      { "label": "Horizontal medium", "value": "border-x-2" },
+      { "label": "Horizontal large", "value": "border-x-4" },
+      { "label": "Vertical none", "value": "border-y-0" },
+      { "label": "Vertical small", "value": "border-y" },
+      { "label": "Vertical medium", "value": "border-y-2" },
+      { "label": "Vertical large", "value": "border-y-4" },
+      { "label": "Top none", "value": "border-t-0" },
+      { "label": "Top small", "value": "border-t" },
+      { "label": "Top medium", "value": "border-t-2" },
+      { "label": "Top large", "value": "border-t-4" },
+      { "label": "Right none", "value": "border-r-0" },
+      { "label": "Right small", "value": "border-r" },
+      { "label": "Right medium", "value": "border-r-2" },
+      { "label": "Right large", "value": "border-r-4" },
+      { "label": "Bottom none", "value": "border-b-0" },
+      { "label": "Bottom small", "value": "border-b" },
+      { "label": "Bottom medium", "value": "border-b-2" },
+      { "label": "Bottom large", "value": "border-b-4" },
+      { "label": "Left none", "value": "border-l-0" },
+      { "label": "Left small", "value": "border-l" },
+      { "label": "Left medium", "value": "border-l-2" },
+      { "label": "Left large", "value": "border-l-4" }
+    ],
+    "Border color": [
+      { "label": "Muted", "value": "border-muted" },
+      { "label": "Foreground", "value": "border-foreground" },
+      { "label": "Primary", "value": "border-primary" },
+      { "label": "Transparent", "value": "border-transparent" }
+    ],
+    "Font size": [
+      { "label": "XS", "value": "text-xs" },
+      { "label": "Small", "value": "text-sm" },
+      { "label": "Base", "value": "text-base" },
+      { "label": "Large", "value": "text-lg" },
+      { "label": "XL", "value": "text-xl" },
+      { "label": "2XL", "value": "text-2xl" },
+      { "label": "3XL", "value": "text-3xl" },
+      { "label": "4XL", "value": "text-4xl" },
+      { "label": "5XL", "value": "text-5xl" },
+      { "label": "4XL", "value": "sm:text-4xl" },
+      { "label": "5XL", "value": "sm:text-5xl" },
+      { "label": "4XL", "value": "md:text-4xl" },
+      { "label": "5XL", "value": "md:text-5xl" },
+      { "label": "4XL", "value": "lg:text-4xl" },
+      { "label": "5XL", "value": "lg:text-5xl" }
+    ],
+    "Font weight": [
+      { "label": "Normal", "value": "font-normal" },
+      { "label": "Medium", "value": "font-medium" },
+      { "label": "Semibold", "value": "font-semibold" },
+      { "label": "Bold", "value": "font-bold" }
+    ],
+    "Line height": [
+      { "label": "Tight", "value": "leading-tight" },
+      { "label": "Snug", "value": "leading-snug" },
+      { "label": "Normal", "value": "leading-normal" },
+      { "label": "Relaxed", "value": "leading-relaxed" }
+    ],
+    "Letter spacing": [
+      { "label": "Tighter", "value": "tracking-tighter" },
+      { "label": "Tight", "value": "tracking-tight" },
+      { "label": "Normal", "value": "tracking-normal" },
+      { "label": "Wide", "value": "tracking-wide" },
+      { "label": "Wider", "value": "tracking-wider" }
+    ],
+    "Text": [
+      { "label": "Align left", "value": "text-left" },
+      { "label": "Align center", "value": "text-center" },
+      { "label": "Align right", "value": "text-right" },
+      { "label": "Uppercase", "value": "uppercase" },
+      { "label": "Italic", "value": "italic" },
+      { "label": "Underline", "value": "underline" },
+      { "label": "Truncate", "value": "truncate" },
+      { "label": "Sans font", "value": "font-sans" },
+      { "label": "Align left", "value": "md:text-left" }
+    ],
+    "Typography": [
+      { "label": "Display", "value": "text-5xl font-bold tracking-tighter leading-tight" },
+      { "label": "Heading 1", "value": "text-4xl font-bold tracking-tight leading-tight" },
+      { "label": "Heading 2", "value": "text-3xl font-bold tracking-tight leading-snug" },
+      { "label": "Heading 3", "value": "text-2xl font-semibold leading-snug" },
+      { "label": "Heading 4", "value": "text-xl font-semibold leading-snug" },
+      { "label": "Lead", "value": "text-xl font-normal leading-relaxed" },
+      { "label": "Body", "value": "text-base font-normal leading-normal" },
+      { "label": "Small", "value": "text-sm font-normal leading-normal" },
+      { "label": "Meta", "value": "text-xs font-medium uppercase tracking-wide" }
+    ],
+    "Display": [
+      { "label": "Block", "value": "block" },
+      { "label": "Inline block", "value": "inline-block" },
+      { "label": "Inline", "value": "inline" },
+      { "label": "Flex", "value": "flex" },
+      { "label": "Inline flex", "value": "inline-flex" },
+      { "label": "Grid", "value": "grid" },
+      { "label": "Hidden", "value": "hidden" },
+      { "label": "Flex", "value": "sm:flex" },
+      { "label": "Block", "value": "md:block" },
+      { "label": "Flex", "value": "md:flex" },
+      { "label": "Hidden", "value": "md:hidden" },
+      { "label": "Block", "value": "lg:block" },
+      { "label": "Flex", "value": "lg:flex" },
+      { "label": "Hidden", "value": "lg:hidden" }
+    ],
+    "Flexbox": [
+      { "label": "Row", "value": "flex-row" },
+      { "label": "Column", "value": "flex-col" },
+      { "label": "Wrap", "value": "flex-wrap" },
+      { "label": "Flex 1", "value": "flex-1" },
+      { "label": "No shrink", "value": "flex-shrink-0" },
+      { "label": "Items start", "value": "items-start" },
+      { "label": "Items center", "value": "items-center" },
+      { "label": "Items end", "value": "items-end" },
+      { "label": "Justify start", "value": "justify-start" },
+      { "label": "Justify center", "value": "justify-center" },
+      { "label": "Justify between", "value": "justify-between" },
+      { "label": "Justify end", "value": "justify-end" },
+      { "label": "Row", "value": "sm:flex-row" },
+      { "label": "Row", "value": "md:flex-row" }
+    ],
+    "Grid columns": [
+      { "label": "1 column", "value": "grid-cols-1" },
+      { "label": "2 columns", "value": "grid-cols-2" },
+      { "label": "3 columns", "value": "grid-cols-3" },
+      { "label": "4 columns", "value": "grid-cols-4" },
+      { "label": "Span 1", "value": "col-span-1" },
+      { "label": "Span 2", "value": "col-span-2" },
+      { "label": "Span full", "value": "col-span-full" },
+      { "label": "2 columns", "value": "sm:grid-cols-2" },
+      { "label": "2 columns", "value": "md:grid-cols-2" },
+      { "label": "3 columns", "value": "md:grid-cols-3" },
+      { "label": "4 columns", "value": "md:grid-cols-4" },
+      { "label": "2 columns", "value": "lg:grid-cols-2" },
+      { "label": "3 columns", "value": "lg:grid-cols-3" },
+      { "label": "4 columns", "value": "lg:grid-cols-4" },
+      { "label": "Span 1", "value": "lg:col-span-1" },
+      { "label": "Span 2", "value": "lg:col-span-2" }
+    ],
+    "Gap": [
+      { "label": "3XS", "value": "gap-1" },
+      { "label": "2XS", "value": "gap-2" },
+      { "label": "XS", "value": "gap-3" },
+      { "label": "Small", "value": "gap-4" },
+      { "label": "Medium", "value": "gap-6" },
+      { "label": "Large", "value": "gap-8" },
+      { "label": "XL", "value": "gap-12" },
+      { "label": "Large", "value": "md:gap-8" },
+      { "label": "XL", "value": "md:gap-12" },
+      { "label": "Large", "value": "lg:gap-8" },
+      { "label": "XL", "value": "lg:gap-12" }
+    ],
+    "Margin": [
+      { "label": "Center horizontal", "value": "mx-auto" },
+      { "label": "All none", "value": "m-0" },
+      { "label": "All small", "value": "m-4" },
+      { "label": "All medium", "value": "m-6" },
+      { "label": "All large", "value": "m-8" },
+      { "label": "All XL", "value": "m-12" },
+      { "label": "Horizontal none", "value": "mx-0" },
+      { "label": "Horizontal small", "value": "mx-4" },
+      { "label": "Horizontal medium", "value": "mx-6" },
+      { "label": "Horizontal large", "value": "mx-8" },
+      { "label": "Horizontal XL", "value": "mx-12" },
+      { "label": "Vertical none", "value": "my-0" },
+      { "label": "Vertical small", "value": "my-4" },
+      { "label": "Vertical medium", "value": "my-8" },
+      { "label": "Vertical large", "value": "my-12" },
+      { "label": "Vertical XL", "value": "my-16" },
+      { "label": "Top none", "value": "mt-0" },
+      { "label": "Top small", "value": "mt-4" },
+      { "label": "Top medium", "value": "mt-6" },
+      { "label": "Top large", "value": "mt-8" },
+      { "label": "Top XL", "value": "mt-12" },
+      { "label": "Right none", "value": "mr-0" },
+      { "label": "Right small", "value": "mr-4" },
+      { "label": "Right medium", "value": "mr-6" },
+      { "label": "Right large", "value": "mr-8" },
+      { "label": "Right XL", "value": "mr-12" },
+      { "label": "Bottom none", "value": "mb-0" },
+      { "label": "Bottom 2XS", "value": "mb-2" },
+      { "label": "Bottom small", "value": "mb-4" },
+      { "label": "Bottom medium", "value": "mb-6" },
+      { "label": "Bottom large", "value": "mb-8" },
+      { "label": "Bottom XL", "value": "mb-12" },
+      { "label": "Left none", "value": "ml-0" },
+      { "label": "Left small", "value": "ml-4" },
+      { "label": "Left medium", "value": "ml-6" },
+      { "label": "Left large", "value": "ml-8" },
+      { "label": "Left XL", "value": "ml-12" },
+      { "label": "Vertical XL", "value": "md:my-16" },
+      { "label": "Vertical XL", "value": "lg:my-16" }
+    ],
+    "Padding": [
+      { "label": "All none", "value": "p-0" },
+      { "label": "All small", "value": "p-4" },
+      { "label": "All medium", "value": "p-6" },
+      { "label": "All large", "value": "p-8" },
+      { "label": "All XL", "value": "p-12" },
+      { "label": "Horizontal none", "value": "px-0" },
+      { "label": "Horizontal small", "value": "px-4" },
+      { "label": "Horizontal medium", "value": "px-6" },
+      { "label": "Horizontal large", "value": "px-8" },
+      { "label": "Horizontal XL", "value": "px-12" },
+      { "label": "Vertical none", "value": "py-0" },
+      { "label": "Vertical small", "value": "py-4" },
+      { "label": "Vertical medium", "value": "py-8" },
+      { "label": "Vertical large", "value": "py-12" },
+      { "label": "Vertical XL", "value": "py-16" },
+      { "label": "Vertical 2XL", "value": "py-20" },
+      { "label": "Vertical 3XL", "value": "py-24" },
+      { "label": "Top none", "value": "pt-0" },
+      { "label": "Top small", "value": "pt-4" },
+      { "label": "Top medium", "value": "pt-6" },
+      { "label": "Top large", "value": "pt-8" },
+      { "label": "Top XL", "value": "pt-12" },
+      { "label": "Right none", "value": "pr-0" },
+      { "label": "Right small", "value": "pr-4" },
+      { "label": "Right medium", "value": "pr-6" },
+      { "label": "Right large", "value": "pr-8" },
+      { "label": "Right XL", "value": "pr-12" },
+      { "label": "Bottom none", "value": "pb-0" },
+      { "label": "Bottom small", "value": "pb-4" },
+      { "label": "Bottom medium", "value": "pb-6" },
+      { "label": "Bottom large", "value": "pb-8" },
+      { "label": "Bottom XL", "value": "pb-12" },
+      { "label": "Left none", "value": "pl-0" },
+      { "label": "Left small", "value": "pl-4" },
+      { "label": "Left medium", "value": "pl-6" },
+      { "label": "Left large", "value": "pl-8" },
+      { "label": "Left XL", "value": "pl-12" },
+      { "label": "Vertical XL", "value": "md:py-16" },
+      { "label": "Vertical 2XL", "value": "md:py-20" },
+      { "label": "Vertical XL", "value": "lg:py-16" },
+      { "label": "Vertical 2XL", "value": "lg:py-20" },
+      { "label": "Vertical 3XL", "value": "lg:py-24" }
+    ],
+    "Sizing": [
+      { "label": "Width full", "value": "w-full" },
+      { "label": "Height full", "value": "h-full" },
+      { "label": "Min height screen", "value": "min-h-screen" },
+      { "label": "Max width 2xl", "value": "max-w-2xl" },
+      { "label": "Max width 3xl", "value": "max-w-3xl" },
+      { "label": "Max width 4xl", "value": "max-w-4xl" },
+      { "label": "Max width 6xl", "value": "max-w-6xl" }
+    ],
+    "Radius": [
+      { "label": "None", "value": "rounded-none" },
+      { "label": "Small", "value": "rounded-sm" },
+      { "label": "Medium", "value": "rounded-md" },
+      { "label": "Large", "value": "rounded-lg" },
+      { "label": "XL", "value": "rounded-xl" },
+      { "label": "Full", "value": "rounded-full" }
+    ],
+    "Shadows": [
+      { "label": "None", "value": "shadow-none" },
+      { "label": "Small", "value": "shadow-sm" },
+      { "label": "Medium", "value": "shadow-md" },
+      { "label": "Large", "value": "shadow-lg" },
+      { "label": "XL", "value": "shadow-xl" }
+    ],
+    "Position": [
+      { "label": "Relative", "value": "relative" },
+      { "label": "Absolute", "value": "absolute" },
+      { "label": "Sticky", "value": "sticky" },
+      { "label": "Fixed", "value": "fixed" },
+      { "label": "Inset 0", "value": "inset-0" },
+      { "label": "Top 0", "value": "top-0" },
+      { "label": "Right 0", "value": "right-0" },
+      { "label": "Bottom 0", "value": "bottom-0" },
+      { "label": "Left 0", "value": "left-0" }
+    ],
+    "Object fit & aspect": [
+      { "label": "Object cover", "value": "object-cover" },
+      { "label": "Aspect square", "value": "aspect-square" },
+      { "label": "Aspect video", "value": "aspect-video" }
+    ],
+    "Effects": [
+      { "label": "Overflow hidden", "value": "overflow-hidden" },
+      { "label": "Transition", "value": "transition" },
+      { "label": "Cursor pointer", "value": "cursor-pointer" },
+      { "label": "Screen-reader only", "value": "sr-only" }
+    ],
+    "Rich text": [
+      { "label": "Prose", "value": "prose" }
+    ],
+    "Container": [
+      { "label": "Default", "value": "container" },
+      { "label": "Narrow", "value": "container-narrow" },
+      { "label": "Wide", "value": "container-wide" }
+    ],
+    "Grid": [
+      { "label": "2 columns", "value": "grid grid-cols-2" },
+      { "label": "3 columns", "value": "grid grid-cols-3" },
+      { "label": "4 columns", "value": "grid grid-cols-4" }
+    ],
+    "Container and Grid": [
+      { "label": "Default · 2 cols", "value": "container grid grid-cols-2" },
+      { "label": "Default · 3 cols", "value": "container grid grid-cols-3" },
+      { "label": "Default · 4 cols", "value": "container grid grid-cols-4" },
+      { "label": "Narrow · 2 cols", "value": "container-narrow grid grid-cols-2" },
+      { "label": "Narrow · 3 cols", "value": "container-narrow grid grid-cols-3" },
+      { "label": "Narrow · 4 cols", "value": "container-narrow grid grid-cols-4" },
+      { "label": "Wide · 2 cols", "value": "container-wide grid grid-cols-2" },
+      { "label": "Wide · 3 cols", "value": "container-wide grid grid-cols-3" },
+      { "label": "Wide · 4 cols", "value": "container-wide grid grid-cols-4" }
+    ]
+  }
+}
   </script>
 
+  <!-- ====================================================================
+       THEME TOGGLE SCRIPT
+       ==================================================================== -->
   <script>
-    const themeToggles = document.querySelectorAll('[aria-label="Toggle theme"]');
-    themeToggles.forEach((toggle) => {
-      toggle.addEventListener('click', () => {
-        document.documentElement.classList.toggle('dark');
-      });
-    });
+    (function () {
+      const toggles = document.querySelectorAll('[aria-label="Toggle theme"]');
+      const root = document.documentElement;
 
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    if (mobileToggle) {
-      mobileToggle.addEventListener('click', () => {
-        const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
-        mobileToggle.setAttribute('aria-expanded', String(!expanded));
-        document.body.classList.toggle('nav-open');
-      });
-    }
+      function applyTheme(dark) {
+        root.classList.toggle('dark', dark);
+        toggles.forEach(function (btn) {
+          var sun = btn.querySelector('.sun-icon');
+          var moon = btn.querySelector('.moon-icon');
+          if (sun) sun.style.display = dark ? 'none' : 'block';
+          if (moon) moon.style.display = dark ? 'block' : 'none';
+        });
+      }
 
-    document.querySelectorAll('.accordion__button').forEach((button) => {
-      button.addEventListener('click', () => {
-        const accordion = button.closest('.accordion');
-        const isOpen = accordion.classList.toggle('is-open');
-        button.setAttribute('aria-expanded', String(isOpen));
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(stored === 'dark' || (!stored && prefersDark));
+
+      toggles.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var isDark = !root.classList.contains('dark');
+          applyTheme(isDark);
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
       });
-    });
+    })();
   </script>
 </body>
 </html>
