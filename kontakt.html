@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontakt och bokning · Nordisk Klinikhälsa</title>
+  <meta name="description" content="Kontakta Nordisk Klinikhälsa i Stockholm. Boka konsultation, hitta adress, telefon, e-post, öppettider och karta." />
+  <link rel="canonical" href="kontakt.html" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Nordisk Klinikhälsa startsida">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Nordisk Klinikhälsa</span>
+          <span class="brand-subtitle">Specialistklinik</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Huvudmeny">
+        <a class="nav-link" href="index.html">Start</a>
+        <a class="nav-link" href="behandling.html">Behandling</a>
+        <a class="nav-link" href="kontakt.html" aria-current="page">Kontakt</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm" href="kontakt.html">Boka tid</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="mobile-toggle" type="button" aria-label="Öppna meny" aria-expanded="false">
+          <span class="mobile-toggle__bars" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-content reveal">
+          <span class="eyebrow">Kontakt och bokning</span>
+          <h1>Vi hjälper dig hitta rätt nästa steg</h1>
+          <p class="lead">Skicka en bokningsförfrågan, ring oss eller besök kliniken i centrala Stockholm. Vi återkommer normalt inom en arbetsdag med förslag på tid och information inför ditt besök.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="#kontaktformular">Skicka förfrågan</a>
+            <a class="btn btn-outline btn-lg" href="tel:+4681234567">Ring 08-123 45 67</a>
+          </div>
+        </div>
+
+        <div class="hero-media reveal">
+          <div class="hero-card">
+            <img class="hero-image" src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80" alt="Reception på modern klinik med lugn och välkomnande miljö" />
+            <div class="hero-note">
+              <strong>Välkommen till oss</strong>
+              <span>Diskret mottagning, tydliga tider och personlig service.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-secondary" id="kontaktformular">
+      <div class="container split">
+        <div class="stack reveal">
+          <span class="eyebrow">Boka konsultation</span>
+          <h2>Berätta kort vad du önskar hjälp med</h2>
+          <p class="lead">Formuläret är en förfrågan, inte en bindande bokning. Vi kontaktar dig för att bekräfta tid och säkerställa att du får rätt typ av besök.</p>
+
+          <ul class="feature-list">
+            <li>Vi återkommer normalt inom en arbetsdag.</li>
+            <li>Dina uppgifter hanteras konfidentiellt.</li>
+            <li>Vid akuta besvär ska du kontakta 1177 eller akutmottagning.</li>
+          </ul>
+
+          <div class="card p-6">
+            <h3 class="mb-4">Snabb kontakt</h3>
+            <ul class="contact-list">
+              <li class="contact-item">
+                <span class="contact-item__icon" aria-hidden="true">☎</span>
+                <div>
+                  <strong>Telefon</strong>
+                  <p><a href="tel:+4681234567">08-123 45 67</a></p>
+                </div>
+              </li>
+              <li class="contact-item">
+                <span class="contact-item__icon" aria-hidden="true">@</span>
+                <div>
+                  <strong>E-post</strong>
+                  <p><a href="mailto:kontakt@nordiskklinikhalsa.se">kontakt@nordiskklinikhalsa.se</a></p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <form class="form card p-8 reveal" action="#" method="post" data-form="booking-request" aria-label="Kontaktformulär för bokningsförfrågan">
+          <div class="field">
+            <label class="label" for="name">Namn</label>
+            <input class="input" id="name" name="name" type="text" autocomplete="name" placeholder="För- och efternamn" required />
+          </div>
+
+          <div class="field">
+            <label class="label" for="email">E-post</label>
+            <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="namn@exempel.se" required />
+          </div>
+
+          <div class="field">
+            <label class="label" for="phone">Telefon</label>
+            <input class="input" id="phone" name="phone" type="tel" autocomplete="tel" placeholder="070-123 45 67" />
+          </div>
+
+          <div class="field">
+            <label class="label" for="service">Vad gäller din förfrågan?</label>
+            <select class="select" id="service" name="service" required>
+              <option value="">Välj ett alternativ</option>
+              <option value="hudkonsultation">Hudkonsultation</option>
+              <option value="medicinsk-radgivning">Medicinsk rådgivning</option>
+              <option value="aterbesok">Återbesök eller uppföljning</option>
+              <option value="annat">Annat ärende</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="label" for="preferred-time">Önskad tidpunkt</label>
+            <select class="select" id="preferred-time" name="preferred-time">
+              <option value="">Ingen särskild preferens</option>
+              <option value="formiddag">Förmiddag</option>
+              <option value="eftermiddag">Eftermiddag</option>
+              <option value="fredag">Fredag</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="label" for="message">Meddelande</label>
+            <textarea class="textarea" id="message" name="message" placeholder="Berätta kort vad du önskar hjälp med, tidigare behandlingar eller frågor inför besöket." required></textarea>
+          </div>
+
+          <button class="btn btn-primary btn-lg" type="submit">Skicka förfrågan</button>
+          <p class="form-note">Genom att skicka formuläret godkänner du att vi kontaktar dig via angivna kontaktuppgifter. Skicka inte känsliga akuta uppgifter via formuläret.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header section-header--center mb-8 reveal">
+          <span class="eyebrow">Besök kliniken</span>
+          <h2>Adress, öppettider och praktisk information</h2>
+          <p>Vår mottagning ligger centralt med goda kommunikationer. Kom gärna några minuter före din bokade tid.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3">
+          <article class="card p-6 reveal">
+            <span class="badge badge-primary mb-4">Adress</span>
+            <h3 class="mb-2">Nordisk Klinikhälsa</h3>
+            <p>Birger Jarlsgatan 22<br />114 34 Stockholm</p>
+            <a class="cta-link mt-4" href="#karta">Visa karta →</a>
+          </article>
+
+          <article class="card p-6 reveal">
+            <span class="badge badge-primary mb-4">Kontakt</span>
+            <h3 class="mb-2">Telefon och e-post</h3>
+            <p><a href="tel:+4681234567">08-123 45 67</a><br /><a href="mailto:kontakt@nordiskklinikhalsa.se">kontakt@nordiskklinikhalsa.se</a></p>
+            <a class="cta-link mt-4" href="behandling.html">Läs om behandling →</a>
+          </article>
+
+          <article class="card p-6 reveal">
+            <span class="badge badge-primary mb-4">Inför besöket</span>
+            <h3 class="mb-2">Ta gärna med</h3>
+            <p>Aktuell läkemedelslista, information om tidigare behandlingar och de frågor du vill diskutera med behandlaren.</p>
+            <a class="cta-link mt-4" href="behandling.html#faq">Vanliga frågor →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-muted" id="karta">
+      <div class="container grid md:grid-cols-2 gap-8">
+        <div class="map-placeholder reveal" role="img" aria-label="Platshållare för karta över Nordisk Klinikhälsa på Birger Jarlsgatan 22 i Stockholm">
+          <div>
+            <span class="map-pin" aria-hidden="true">⌖</span>
+            <strong>Karta</strong>
+            <p>Platshållare för inbäddad karta<br />Birger Jarlsgatan 22, Stockholm</p>
+          </div>
+        </div>
+
+        <div class="stack reveal">
+          <div class="card p-6">
+            <h2 class="text-2xl mb-4">Öppettider</h2>
+            <ul class="hours">
+              <li><strong>Måndag</strong><span>08.00–17.00</span></li>
+              <li><strong>Tisdag</strong><span>08.00–17.00</span></li>
+              <li><strong>Onsdag</strong><span>08.00–17.00</span></li>
+              <li><strong>Torsdag</strong><span>08.00–17.00</span></li>
+              <li><strong>Fredag</strong><span>08.00–15.00</span></li>
+              <li><strong>Lördag</strong><span>Stängt</span></li>
+              <li><strong>Söndag</strong><span>Stängt</span></li>
+            </ul>
+          </div>
+
+          <div class="card p-6">
+            <h2 class="text-2xl mb-4">Hitta hit</h2>
+            <p class="mb-4">Kliniken ligger nära tunnelbana, bussar och parkering. Receptionen är bemannad under öppettider och hjälper dig gärna vid ankomst.</p>
+            <ul class="feature-list">
+              <li>Närmaste tunnelbana: Östermalmstorg.</li>
+              <li>Hiss finns i fastigheten.</li>
+              <li>Väntrum med lugn och diskret miljö.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta reveal">
+          <div class="grid md:grid-cols-2 md:items-center gap-8">
+            <div class="stack">
+              <span class="badge badge-accent">Osäker på vad du behöver?</span>
+              <h2>Vi guidar dig till rätt typ av besök</h2>
+              <p>Om du är osäker på vilken behandling eller rådgivning som passar kan du beskriva din situation kort, så hjälper vi dig vidare.</p>
+            </div>
+            <div class="cluster md:justify-between">
+              <a class="btn btn-secondary btn-lg" href="#kontaktformular">Skicka förfrågan</a>
+              <a class="btn btn-outline btn-lg" href="behandling.html">Läs om konsultation</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div class="stack">
+          <a class="brand" href="index.html" aria-label="Nordisk Klinikhälsa startsida">
+            <span class="brand-mark" aria-hidden="true">+</span>
+            <span class="brand-text">
+              <span class="brand-name">Nordisk Klinikhälsa</span>
+              <span class="brand-subtitle">Specialistklinik</span>
+            </span>
+          </a>
+          <p>Modern, personlig och trygg specialistvård i en premium klinikmiljö i centrala Stockholm.</p>
+        </div>
+
+        <div class="stack">
+          <h3 class="text-base">Sidor</h3>
+          <a class="footer-link" href="index.html">Start</a>
+          <a class="footer-link" href="behandling.html">Behandling</a>
+          <a class="footer-link" href="kontakt.html">Kontakt</a>
+        </div>
+
+        <div class="stack">
+          <h3 class="text-base">Kontakt</h3>
+          <a class="footer-link" href="tel:+4681234567">08-123 45 67</a>
+          <a class="footer-link" href="mailto:kontakt@nordiskklinikhalsa.se">kontakt@nordiskklinikhalsa.se</a>
+          <a class="footer-link" href="#kontaktformular">Boka konsultation</a>
+        </div>
+
+        <div class="stack">
+          <h3 class="text-base">Besök</h3>
+          <p>Birger Jarlsgatan 22<br />114 34 Stockholm</p>
+          <p>Mån–tor 08.00–17.00<br />Fre 08.00–15.00</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Nordisk Klinikhälsa. Alla rättigheter förbehållna.</span>
+        <span>Integritet · Tillgänglighet · Kvalitet</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
