@@ -1,254 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inkwell — Thoughts on Design, Code &amp; Craft</title>
-  <meta name="description" content="A modern blog exploring web development, design systems, creative tooling, and the intersection of technology and human experience.">
-  <meta name="theme-color" content="#4f46e5">
-  <link rel="stylesheet" href="/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Minimal · Essays on Design, Systems, and Thoughtful Web Craft</title>
+  <meta name="description" content="Minimal is a fast, accessible blog for practical essays on design systems, editorial workflows, typography, performance, and sustainable product craft." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Minimal · Thoughtful Web Craft" />
+  <meta property="og:description" content="Practical essays on design systems, writing workflows, performance, and modern publishing." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="index.html" />
+  <meta name="theme-color" content="#4f46e5" />
+  <link rel="canonical" href="index.html" />
+  <link rel="stylesheet" href="/style.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ====================================================================
-       HEADER
-       ==================================================================== -->
   <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="brand">
-        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-        Inkwell
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Minimal home">
+        <span class="brand__mark" aria-hidden="true">M</span>
+        <span>Minimal</span>
       </a>
-      <nav class="nav" aria-label="Main navigation">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="post.html" class="nav-link">Blog</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+
+      <nav class="nav" id="primary-navigation" data-primary-nav aria-label="Primary navigation">
+        <a class="nav-link" href="index.html" aria-current="page">Home</a>
+        <a class="nav-link" href="post.html">Featured Post</a>
+        <a class="nav-link" href="contact.html">Contact</a>
       </nav>
+
       <div class="header-actions">
-        <button class="theme-toggle" aria-label="Toggle theme" type="button">
-          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-        <button class="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" type="button">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <button class="theme-toggle" type="button" aria-label="Toggle theme" aria-pressed="false">☾</button>
+        <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open menu" aria-controls="primary-navigation" aria-expanded="false">
+          <span aria-hidden="true">☰</span>
         </button>
       </div>
     </div>
-    <nav class="mobile-nav" aria-label="Mobile navigation">
-      <a href="index.html" class="nav-link active">Home</a>
-      <a href="post.html" class="nav-link">Blog</a>
-      <a href="contact.html" class="nav-link">Contact</a>
-    </nav>
   </header>
 
-  <main>
-    <!-- ==================================================================
-         HERO
-         ================================================================== -->
-    <section class="section py-16 lg:py-24">
-      <div class="container">
-        <div class="hero">
-          <div class="hero__eyebrow">
-            <span class="badge badge-primary">Welcome to Inkwell</span>
-          </div>
-          <h1 class="hero__title">Thoughts on design, code, and the craft of building for the web</h1>
-          <p class="hero__description">Exploring modern web development, design systems, creative tooling, and the intersection of technology and human experience.</p>
+  <main id="main">
+    <section class="section">
+      <div class="container hero">
+        <div class="hero__content">
+          <span class="badge">Independent ideas for modern teams</span>
+          <h1 class="hero__title">Make better digital work by thinking more clearly.</h1>
+          <p class="hero__lead">
+            Minimal publishes practical essays on design systems, writing workflows, performance,
+            and sustainable product craft — designed for focused reading on every device.
+          </p>
           <div class="hero__actions">
-            <a href="post.html" class="btn btn-primary btn-lg">Start Reading</a>
-            <a href="contact.html" class="btn btn-outline btn-lg">Get in Touch</a>
+            <a class="btn btn-primary btn-lg" href="post.html">Read the featured essay</a>
+            <a class="btn btn-outline btn-lg" href="#latest-posts">Browse latest posts</a>
           </div>
         </div>
+
+        <article class="hero-card" aria-labelledby="hero-card-title">
+          <div class="hero-card__media" aria-hidden="true">
+            <svg viewBox="0 0 800 500" role="img" aria-label="Abstract article layout illustration">
+              <rect width="800" height="500" fill="currentColor" opacity=".05"></rect>
+              <circle cx="230" cy="170" r="150" fill="currentColor" opacity=".15"></circle>
+              <circle cx="650" cy="360" r="110" fill="currentColor" opacity=".10"></circle>
+              <path d="M120 340h560M120 280h380M120 220h520M120 160h300" stroke="currentColor" stroke-width="20" opacity=".24"></path>
+            </svg>
+          </div>
+          <div class="hero-card__body">
+            <div class="post-meta">
+              <span>Featured</span>
+              <span aria-hidden="true">·</span>
+              <span>8 min read</span>
+            </div>
+            <h2 class="text-2xl" id="hero-card-title">
+              <a href="post.html">Design systems that respect editorial rhythm</a>
+            </h2>
+            <p class="text-muted-foreground">
+              How reusable patterns can support distinctive long-form storytelling without slowing a team down.
+            </p>
+            <a class="cta-link" href="post.html">Read the essay →</a>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- ==================================================================
-         FEATURED POST
-         ================================================================== -->
-    <section class="section py-12 lg:py-16">
+    <section class="section bg-muted" aria-labelledby="featured-title">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-header__title">Featured Article</h2>
-          <p class="section-header__description">Our latest deep dive into the world of web development.</p>
+        <div class="section-heading">
+          <span class="section-heading__eyebrow">Featured essay</span>
+          <h2 id="featured-title">Systems for thoughtful publishing</h2>
+          <p class="section-heading__lead">
+            A practical look at how writers and designers can share one visual language while preserving the pace of a good story.
+          </p>
         </div>
-        <a href="post.html" class="featured-card">
-          <img class="featured-card__image" src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=500&fit=crop" alt="Lines of code glowing on a dark monitor" loading="lazy">
-          <div class="featured-card__content">
-            <span class="badge badge-primary">Featured</span>
-            <h2 class="featured-card__title">The Future of Web Development</h2>
-            <p class="featured-card__excerpt">Exploring how modern tooling, AI assistance, and design systems are reshaping how we build for the web — and what it means for developers in the next decade.</p>
-            <div class="author-block">
-              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Alex Rivera" class="avatar avatar-sm" loading="lazy">
-              <div class="author-block__info">
-                <span class="author-block__name">Alex Rivera</span>
-                <span class="author-block__detail">Mar 20, 2025 · 8 min read</span>
+
+        <article class="featured-post">
+          <div class="featured-post__media" aria-hidden="true">
+            <svg viewBox="0 0 900 560" role="img" aria-label="Abstract editorial workflow illustration">
+              <rect width="900" height="560" fill="currentColor" opacity=".05"></rect>
+              <circle cx="700" cy="130" r="170" fill="currentColor" opacity=".12"></circle>
+              <circle cx="160" cy="410" r="90" fill="currentColor" opacity=".10"></circle>
+              <path d="M100 380 C260 180 430 480 610 240 S810 250 850 150" stroke="currentColor" stroke-width="34" fill="none" opacity=".28"></path>
+              <path d="M120 120h340M120 180h220M120 440h430" stroke="currentColor" stroke-width="18" opacity=".18"></path>
+            </svg>
+          </div>
+          <div class="featured-post__body">
+            <span class="badge">Design systems</span>
+            <h3><a href="post.html">Design systems that respect editorial rhythm</a></h3>
+            <p class="text-muted-foreground">
+              A design system should make publishing feel faster without forcing every article into the same shape.
+              This essay explores practical defaults for long-form pages, reusable cards, and flexible section patterns.
+            </p>
+            <div class="post-meta">
+              <span>By Mara Ellis</span>
+              <span aria-hidden="true">·</span>
+              <time datetime="2026-02-18">Feb 18, 2026</time>
+              <span aria-hidden="true">·</span>
+              <span>8 min read</span>
+            </div>
+            <a class="btn btn-primary" href="post.html">Continue reading</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="latest-posts" aria-labelledby="latest-title">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-heading__eyebrow">Latest posts</span>
+          <h2 id="latest-title">Fresh thinking for makers and editors</h2>
+          <p class="section-heading__lead">
+            Short, useful essays on the systems behind high-quality digital publishing.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3">
+          <article class="post-card">
+            <div class="post-card__media" aria-hidden="true">
+              <svg viewBox="0 0 800 500" role="img" aria-label="Abstract checklist illustration">
+                <rect width="800" height="500" fill="currentColor" opacity=".06"></rect>
+                <circle cx="180" cy="140" r="120" fill="currentColor" opacity=".14"></circle>
+                <path d="M150 310h500M150 250h420M150 190h480" stroke="currentColor" stroke-width="24" opacity=".22"></path>
+              </svg>
+            </div>
+            <div class="post-card__body">
+              <div class="post-meta">
+                <span>Workflow</span>
+                <span aria-hidden="true">·</span>
+                <time datetime="2026-02-10">Feb 10, 2026</time>
+                <span aria-hidden="true">·</span>
+                <span>5 min read</span>
               </div>
+              <h3><a href="post.html">A simpler checklist for publishing day</a></h3>
+              <p class="text-muted-foreground">
+                The small rituals that keep teams aligned before an article goes live.
+              </p>
+              <a class="cta-link" href="post.html">Read more →</a>
             </div>
+          </article>
+
+          <article class="post-card">
+            <div class="post-card__media" aria-hidden="true">
+              <svg viewBox="0 0 800 500" role="img" aria-label="Abstract performance illustration">
+                <rect width="800" height="500" fill="currentColor" opacity=".06"></rect>
+                <path d="M100 330h600M100 250h480M100 170h560" stroke="currentColor" stroke-width="26" opacity=".20"></path>
+                <circle cx="610" cy="150" r="90" fill="currentColor" opacity=".12"></circle>
+              </svg>
+            </div>
+            <div class="post-card__body">
+              <div class="post-meta">
+                <span>Performance</span>
+                <span aria-hidden="true">·</span>
+                <time datetime="2026-02-04">Feb 4, 2026</time>
+                <span aria-hidden="true">·</span>
+                <span>4 min read</span>
+              </div>
+              <h3><a href="post.html">Fast pages begin with fewer decisions</a></h3>
+              <p class="text-muted-foreground">
+                Why constrained design systems often produce faster, more resilient websites.
+              </p>
+              <a class="cta-link" href="post.html">Read more →</a>
+            </div>
+          </article>
+
+          <article class="post-card">
+            <div class="post-card__media" aria-hidden="true">
+              <svg viewBox="0 0 800 500" role="img" aria-label="Abstract typography illustration">
+                <rect width="800" height="500" fill="currentColor" opacity=".06"></rect>
+                <circle cx="600" cy="250" r="170" fill="currentColor" opacity=".13"></circle>
+                <path d="M130 150h330M130 220h540M130 290h390M130 360h470" stroke="currentColor" stroke-width="19" opacity=".22"></path>
+              </svg>
+            </div>
+            <div class="post-card__body">
+              <div class="post-meta">
+                <span>Typography</span>
+                <span aria-hidden="true">·</span>
+                <time datetime="2026-01-28">Jan 28, 2026</time>
+                <span aria-hidden="true">·</span>
+                <span>7 min read</span>
+              </div>
+              <h3><a href="post.html">The quiet power of a readable measure</a></h3>
+              <p class="text-muted-foreground">
+                Line length, rhythm, and contrast choices that make long reads feel lighter.
+              </p>
+              <a class="cta-link" href="post.html">Read more →</a>
+            </div>
+          </article>
+
+          <article class="post-card">
+            <div class="post-card__media" aria-hidden="true">
+              <svg viewBox="0 0 800 500" role="img" aria-label="Abstract notes illustration">
+                <rect width="800" height="500" fill="currentColor" opacity=".06"></rect>
+                <circle cx="210" cy="330" r="120" fill="currentColor" opacity=".13"></circle>
+                <path d="M180 150h440M180 215h320M180 280h500" stroke="currentColor" stroke-width="22" opacity=".22"></path>
+              </svg>
+            </div>
+            <div class="post-card__body">
+              <div class="post-meta">
+                <span>Research</span>
+                <span aria-hidden="true">·</span>
+                <time datetime="2026-01-20">Jan 20, 2026</time>
+                <span aria-hidden="true">·</span>
+                <span>6 min read</span>
+              </div>
+              <h3><a href="post.html">Turning raw notes into useful essays</a></h3>
+              <p class="text-muted-foreground">
+                A lightweight method for moving from research fragments to published insight.
+              </p>
+              <a class="cta-link" href="post.html">Read more →</a>
+            </div>
+          </article>
+
+          <article class="post-card">
+            <div class="post-card__media" aria-hidden="true">
+              <svg viewBox="0 0 800 500" role="img" aria-label="Abstract accessibility illustration">
+                <rect width="800" height="500" fill="currentColor" opacity=".06"></rect>
+                <circle cx="400" cy="250" r="155" fill="currentColor" opacity=".12"></circle>
+                <path d="M230 250h340M400 80v340" stroke="currentColor" stroke-width="24" opacity=".22"></path>
+              </svg>
+            </div>
+            <div class="post-card__body">
+              <div class="post-meta">
+                <span>Accessibility</span>
+                <span aria-hidden="true">·</span>
+                <time datetime="2026-01-12">Jan 12, 2026</time>
+                <span aria-hidden="true">·</span>
+                <span>5 min read</span>
+              </div>
+              <h3><a href="post.html">Accessible defaults are editorial defaults</a></h3>
+              <p class="text-muted-foreground">
+                How semantic structure and readable states protect every reader's experience.
+              </p>
+              <a class="cta-link" href="post.html">Read more →</a>
+            </div>
+          </article>
+
+          <article class="post-card">
+            <div class="post-card__media" aria-hidden="true">
+              <svg viewBox="0 0 800 500" role="img" aria-label="Abstract collaboration illustration">
+                <rect width="800" height="500" fill="currentColor" opacity=".06"></rect>
+                <circle cx="250" cy="210" r="100" fill="currentColor" opacity=".12"></circle>
+                <circle cx="520" cy="290" r="130" fill="currentColor" opacity=".14"></circle>
+                <path d="M310 230 C390 160 450 360 540 270" stroke="currentColor" stroke-width="22" fill="none" opacity=".25"></path>
+              </svg>
+            </div>
+            <div class="post-card__body">
+              <div class="post-meta">
+                <span>Teams</span>
+                <span aria-hidden="true">·</span>
+                <time datetime="2026-01-05">Jan 5, 2026</time>
+                <span aria-hidden="true">·</span>
+                <span>6 min read</span>
+              </div>
+              <h3><a href="post.html">Shared language for faster critique</a></h3>
+              <p class="text-muted-foreground">
+                The vocabulary that helps product, design, and editorial teams improve work together.
+              </p>
+              <a class="cta-link" href="post.html">Read more →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="newsletter-title">
+      <div class="container cta">
+        <div class="grid md:grid-cols-2 items-center gap-8">
+          <div class="stack">
+            <span class="badge">Monthly briefing</span>
+            <h2 id="newsletter-title">Get the best essays in one calm email.</h2>
+            <p>
+              One thoughtful digest with new posts, reading notes, and practical resources for digital teams.
+            </p>
           </div>
-        </a>
-      </div>
-    </section>
-
-    <!-- ==================================================================
-         LATEST POSTS GRID
-         ================================================================== -->
-    <section class="section py-12 lg:py-16">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-header__title">Latest Articles</h2>
-          <p class="section-header__description">Fresh perspectives on design, development, and productivity.</p>
-        </div>
-        <div class="post-grid">
-          <!-- Card 1 -->
-          <a href="post.html" class="card card--link">
-            <img class="card__image" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=340&fit=crop" alt="Laptop open on a wooden desk with a cup of coffee nearby" loading="lazy">
-            <div class="card__body">
-              <div class="mb-2"><span class="badge badge-primary">Design</span></div>
-              <h3 class="card__title">Building Better User Interfaces</h3>
-              <p class="card__excerpt">Learn the principles behind intuitive, accessible interfaces that users actually enjoy using every day.</p>
+          <form class="form" action="#" method="post" aria-label="Newsletter signup">
+            <div class="field">
+              <label class="label text-background" for="newsletter-email">Email address</label>
+              <input class="input" id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="reader@example.com" />
             </div>
-            <div class="card__footer">
-              <span class="card__meta">Mar 15, 2025</span>
-              <span class="card__meta">5 min read</span>
-            </div>
-          </a>
-
-          <!-- Card 2 -->
-          <a href="post.html" class="card card--link">
-            <img class="card__image" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=340&fit=crop" alt="Close-up of JavaScript code on a screen" loading="lazy">
-            <div class="card__body">
-              <div class="mb-2"><span class="badge badge-secondary">Development</span></div>
-              <h3 class="card__title">CSS Custom Properties Deep Dive</h3>
-              <p class="card__excerpt">How to architect a token-based styling system using nothing but native CSS variables and semantic naming.</p>
-            </div>
-            <div class="card__footer">
-              <span class="card__meta">Mar 10, 2025</span>
-              <span class="card__meta">7 min read</span>
-            </div>
-          </a>
-
-          <!-- Card 3 -->
-          <a href="post.html" class="card card--link">
-            <img class="card__image" src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=340&fit=crop" alt="Notebook with a to-do list and a pen" loading="lazy">
-            <div class="card__body">
-              <div class="mb-2"><span class="badge badge-outline">Productivity</span></div>
-              <h3 class="card__title">The Art of Focused Work</h3>
-              <p class="card__excerpt">Strategies for deep work in an age of constant distraction — from time-boxing to digital minimalism.</p>
-            </div>
-            <div class="card__footer">
-              <span class="card__meta">Mar 5, 2025</span>
-              <span class="card__meta">4 min read</span>
-            </div>
-          </a>
-
-          <!-- Card 4 -->
-          <a href="post.html" class="card card--link">
-            <img class="card__image" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=340&fit=crop" alt="Person typing on a laptop keyboard" loading="lazy">
-            <div class="card__body">
-              <div class="mb-2"><span class="badge badge-primary">Engineering</span></div>
-              <h3 class="card__title">Vanilla JS Is Enough</h3>
-              <p class="card__excerpt">Why reaching for a framework isn't always the answer — and how the platform has caught up to most use cases.</p>
-            </div>
-            <div class="card__footer">
-              <span class="card__meta">Feb 28, 2025</span>
-              <span class="card__meta">6 min read</span>
-            </div>
-          </a>
-
-          <!-- Card 5 -->
-          <a href="post.html" class="card card--link">
-            <img class="card__image" src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=600&h=340&fit=crop" alt="Design wireframes spread across a table" loading="lazy">
-            <div class="card__body">
-              <div class="mb-2"><span class="badge badge-secondary">Design Systems</span></div>
-              <h3 class="card__title">Tokens, Components, Sections</h3>
-              <p class="card__excerpt">A practical guide to structuring a design system that scales from a single page to an entire product.</p>
-            </div>
-            <div class="card__footer">
-              <span class="card__meta">Feb 22, 2025</span>
-              <span class="card__meta">9 min read</span>
-            </div>
-          </a>
-
-          <!-- Card 6 -->
-          <a href="post.html" class="card card--link">
-            <img class="card__image" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=340&fit=crop" alt="Team working together at a large desk with laptops" loading="lazy">
-            <div class="card__body">
-              <div class="mb-2"><span class="badge badge-outline">Culture</span></div>
-              <h3 class="card__title">Remote Work and Creative Flow</h3>
-              <p class="card__excerpt">How distributed teams can maintain creative momentum, build culture, and ship great work from anywhere.</p>
-            </div>
-            <div class="card__footer">
-              <span class="card__meta">Feb 18, 2025</span>
-              <span class="card__meta">5 min read</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================================================================
-         NEWSLETTER CTA
-         ================================================================== -->
-    <section class="section py-12 lg:py-16">
-      <div class="container">
-        <div class="cta-block">
-          <h2 class="cta-block__title">Stay in the loop</h2>
-          <p class="cta-block__description">Get the latest articles delivered straight to your inbox. No spam, unsubscribe anytime.</p>
-          <form class="cta-block__form" id="newsletter-form" action="#newsletter" method="post">
-            <input type="email" class="input" placeholder="you@example.com" aria-label="Email address" required>
-            <button type="submit" class="btn btn-primary">Subscribe</button>
+            <button class="btn btn-primary" type="submit">Subscribe</button>
           </form>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ====================================================================
-       FOOTER
-       ==================================================================== -->
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a href="index.html" class="brand">
-            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-            Inkwell
-          </a>
-          <p class="footer-brand__description">A blog about design, development, and the craft of building thoughtful digital experiences.</p>
-        </div>
-        <div>
-          <h4 class="footer-column__title">Pages</h4>
-          <ul class="footer-column__list">
-            <li><a href="index.html" class="footer-link">Home</a></li>
-            <li><a href="post.html" class="footer-link">Blog</a></li>
-            <li><a href="contact.html" class="footer-link">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="footer-column__title">Connect</h4>
-          <ul class="footer-column__list">
-            <li><a href="#" class="footer-link">Twitter</a></li>
-            <li><a href="#" class="footer-link">GitHub</a></li>
-            <li><a href="#" class="footer-link">LinkedIn</a></li>
-          </ul>
-        </div>
+    <div class="container site-footer__inner">
+      <div class="stack">
+        <a class="brand" href="index.html">
+          <span class="brand__mark" aria-hidden="true">M</span>
+          <span>Minimal</span>
+        </a>
+        <p>A minimalist publication about design systems, writing, and thoughtful web craft.</p>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; 2025 Inkwell. All rights reserved.</span>
-        <div class="footer-socials">
-          <a href="#" class="footer-social-link" aria-label="Twitter">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-          </a>
-          <a href="#" class="footer-social-link" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          </a>
-          <a href="#" class="footer-social-link" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-        </div>
+      <div class="stack">
+        <h2 class="text-base">Explore</h2>
+        <a class="footer-link" href="index.html">Home</a>
+        <a class="footer-link" href="post.html">Featured Post</a>
+        <a class="footer-link" href="contact.html">Contact</a>
+      </div>
+      <div class="stack">
+        <h2 class="text-base">Topics</h2>
+        <a class="footer-link" href="post.html">Design Systems</a>
+        <a class="footer-link" href="post.html">Typography</a>
+        <a class="footer-link" href="post.html">Performance</a>
+      </div>
+      <div class="stack">
+        <h2 class="text-base">Connect</h2>
+        <a class="footer-link" href="contact.html">Pitch a story</a>
+        <a class="footer-link" href="contact.html">Contact the editor</a>
       </div>
     </div>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>

@@ -1,328 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Future of Web Development — Inkwell</title>
-  <meta name="description" content="Exploring how modern tooling, AI assistance, and design systems are reshaping how we build for the web — and what it means for developers in the next decade.">
-  <meta name="theme-color" content="#4f46e5">
-  <meta property="og:title" content="The Future of Web Development — Inkwell">
-  <meta property="og:description" content="Exploring how modern tooling, AI assistance, and design systems are reshaping how we build for the web.">
-  <meta property="og:type" content="article">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1200&h=630&fit=crop">
-  <link rel="stylesheet" href="/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design Systems That Respect Editorial Rhythm · Minimal</title>
+  <meta name="description" content="A practical essay on designing reusable publishing systems that support long-form reading, editorial flexibility, and fast production workflows." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Design Systems That Respect Editorial Rhythm" />
+  <meta property="og:description" content="Reusable design should make publishing easier without sanding away the details that make a story memorable." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="post.html" />
+  <meta property="article:author" content="Mara Ellis" />
+  <meta property="article:published_time" content="2026-02-18" />
+  <meta name="theme-color" content="#4f46e5" />
+  <link rel="canonical" href="post.html" />
+  <link rel="stylesheet" href="/style.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress-bar" data-reading-progress aria-hidden="true"></div>
 
-  <!-- Reading Progress Bar -->
-  <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
-
-  <!-- ====================================================================
-       HEADER
-       ==================================================================== -->
   <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="brand">
-        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-        Inkwell
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Minimal home">
+        <span class="brand__mark" aria-hidden="true">M</span>
+        <span>Minimal</span>
       </a>
-      <nav class="nav" aria-label="Main navigation">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="post.html" class="nav-link active">Blog</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+
+      <nav class="nav" id="primary-navigation" data-primary-nav aria-label="Primary navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="post.html" aria-current="page">Featured Post</a>
+        <a class="nav-link" href="contact.html">Contact</a>
       </nav>
+
       <div class="header-actions">
-        <button class="theme-toggle" aria-label="Toggle theme" type="button">
-          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-        <button class="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" type="button">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <button class="theme-toggle" type="button" aria-label="Toggle theme" aria-pressed="false">☾</button>
+        <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open menu" aria-controls="primary-navigation" aria-expanded="false">
+          <span aria-hidden="true">☰</span>
         </button>
       </div>
     </div>
-    <nav class="mobile-nav" aria-label="Mobile navigation">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="post.html" class="nav-link active">Blog</a>
-      <a href="contact.html" class="nav-link">Contact</a>
-    </nav>
   </header>
 
-  <main>
-    <!-- ==================================================================
-         ARTICLE HEADER
-         ================================================================== -->
-    <section class="section py-12 lg:py-16">
-      <div class="container-narrow">
-        <article>
-          <header class="article-header">
-            <div class="flex flex-wrap gap-2">
-              <span class="badge badge-primary">Featured</span>
-              <span class="badge badge-secondary">Development</span>
-            </div>
-            <h1 class="article-header__title">The Future of Web Development</h1>
-            <p class="text-lg text-muted-foreground leading-relaxed">Exploring how modern tooling, AI assistance, and design systems are reshaping how we build for the web — and what it means for developers in the next decade.</p>
-            <div class="author-block">
-              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Alex Rivera" class="avatar" loading="lazy">
-              <div class="author-block__info">
-                <span class="author-block__name">Alex Rivera</span>
-                <span class="author-block__detail">Published Mar 20, 2025 · 8 min read</span>
-              </div>
-            </div>
-          </header>
+  <main id="main">
+    <article data-article>
+      <header class="container-narrow article-header">
+        <span class="badge mx-auto">Design systems</span>
+        <h1>Design systems that respect editorial rhythm</h1>
+        <p class="hero__lead mx-auto">
+          Reusable design should make publishing easier without sanding away the details that make a story memorable.
+        </p>
+        <div class="post-meta">
+          <span class="avatar" aria-hidden="true"></span>
+          <span>By Mara Ellis</span>
+          <span aria-hidden="true">·</span>
+          <time datetime="2026-02-18">Feb 18, 2026</time>
+          <span aria-hidden="true">·</span>
+          <span>8 min read</span>
+        </div>
+      </header>
 
-          <!-- Featured Image -->
-          <img class="article-featured-image" src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1200&h=520&fit=crop" alt="Glowing lines of code on a dark monitor in a dimly lit room" loading="eager">
-
-          <!-- Table of Contents -->
-          <nav class="toc" aria-label="Table of contents" id="toc">
-            <h2 class="toc__title">In This Article</h2>
-            <ol class="toc__list">
-              <li><a href="#the-shifting-landscape" class="toc__link">The Shifting Landscape</a></li>
-              <li><a href="#design-systems-at-scale" class="toc__link">Design Systems at Scale</a></li>
-              <li><a href="#ai-as-a-collaborator" class="toc__link">AI as a Collaborator</a></li>
-              <li><a href="#the-platform-is-enough" class="toc__link">The Platform Is Enough</a></li>
-              <li><a href="#performance-as-a-feature" class="toc__link">Performance as a Feature</a></li>
-              <li><a href="#looking-ahead" class="toc__link">Looking Ahead</a></li>
-            </ol>
-          </nav>
-
-          <!-- Social Sharing -->
-          <div class="flex items-center justify-between mb-8 py-4 border-t border-b">
-            <span class="text-sm text-muted-foreground font-medium">Share this article</span>
-            <div class="social-share">
-              <a href="#" class="social-share__btn" aria-label="Share on Twitter">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-              </a>
-              <a href="#" class="social-share__btn" aria-label="Share on LinkedIn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-              </a>
-              <button class="social-share__btn" aria-label="Copy link" id="copy-link-btn" type="button">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-              </button>
-            </div>
-          </div>
-
-          <!-- Article Body -->
-          <div class="prose" id="article-body">
-            <h2 id="the-shifting-landscape">The Shifting Landscape</h2>
-            <p>Web development has changed more in the last five years than it did in the previous fifteen. The tools we use, the patterns we follow, and even the fundamental assumptions about how the web works — all of it is in motion.</p>
-            <p>Not long ago, building a professional website meant choosing a heavyweight framework, setting up a complex build pipeline, and managing dozens of dependencies. Today, <strong>the platform itself has become powerful enough</strong> to handle most of what those abstractions were created to solve.</p>
-            <p>CSS custom properties give us theming. CSS Grid and Flexbox handle layout. ES modules give us code organization. The Fetch API handles network requests. Web Components provide encapsulation. The question is no longer "which framework should I learn?" but rather "do I even need one?"</p>
-
-            <h2 id="design-systems-at-scale">Design Systems at Scale</h2>
-            <p>Perhaps the most significant shift in how we build websites has been the rise of design systems — not just as a design exercise, but as an <strong>engineering discipline</strong>.</p>
-            <p>A well-built design system does three things simultaneously:</p>
-            <ol>
-              <li><strong>Enforces consistency</strong> — every button, card, and section follows the same rhythm, spacing, and color rules without per-component decisions</li>
-              <li><strong>Accelerates development</strong> — new pages are assembled from existing pieces rather than designed from scratch</li>
-              <li><strong>Creates a shared vocabulary</strong> — designers and developers speak the same language: tokens, components, sections</li>
-            </ol>
-            <p>The key insight is that a design system isn't a component library. A component library gives you building blocks. A design system gives you building blocks <em>plus</em> the rules for how they compose — spacing tokens, type scales, color semantics, responsive patterns. It's the difference between a pile of LEGO bricks and a LEGO set with an instruction manual.</p>
-            <blockquote>The best design systems are the ones where you can ship a new page by lunchtime — not because you cut corners, but because all the hard decisions were already made.</blockquote>
-
-            <h2 id="ai-as-a-collaborator">AI as a Collaborator</h2>
-            <p>AI hasn't replaced developers. What it has done is change the <em>shape</em> of the work. Instead of writing boilerplate from scratch, developers increasingly describe intent and review output. The creative and architectural decisions still require human judgment, but the mechanical translation of those decisions into code is increasingly automated.</p>
-            <p>This means the skills that matter most are shifting:</p>
-            <ul>
-              <li><strong>Systems thinking</strong> — understanding how pieces fit together matters more than memorizing syntax</li>
-              <li><strong>Taste and judgment</strong> — knowing what "good" looks like when you're reviewing generated code</li>
-              <li><strong>Clear communication</strong> — the better you describe what you want, the better the output</li>
-              <li><strong>Architecture</strong> — deciding <em>what</em> to build and <em>how</em> to structure it remains deeply human</li>
-            </ul>
-            <p>The developers who thrive in this new landscape aren't the ones who resist AI — they're the ones who learn to wield it effectively while maintaining high standards for the output.</p>
-
-            <h2 id="the-platform-is-enough">The Platform Is Enough</h2>
-            <p>There's a growing movement back toward the fundamentals. Developers are rediscovering that HTML, CSS, and vanilla JavaScript — the technologies that <em>are</em> the web — have become remarkably capable.</p>
-            <p>Consider what the platform gives you natively today:</p>
-            <ul>
-              <li><strong>CSS Grid and Flexbox</strong> for any layout you can imagine</li>
-              <li><strong>CSS Custom Properties</strong> for dynamic theming and token-based design</li>
-              <li><strong><code>:has()</code>, <code>:is()</code>, container queries</strong> for sophisticated conditional styling</li>
-              <li><strong>ES Modules</strong> for code organization without bundlers</li>
-              <li><strong>The Fetch API</strong> and <code>async/await</code> for clean asynchronous code</li>
-              <li><strong>Web Components</strong> for encapsulated, reusable elements</li>
-            </ul>
-            <p>The result is that a well-structured HTML + CSS + JS project can rival the capabilities of framework-based applications for a wide range of use cases — blogs, marketing sites, documentation, portfolios, small web apps — while loading faster, being easier to debug, and lasting longer without maintenance.</p>
-
-            <h2 id="performance-as-a-feature">Performance as a Feature</h2>
-            <p>Performance isn't just a technical metric. It's a <strong>user experience feature</strong>. A site that loads in under one second feels fundamentally different from one that takes three. It feels <em>alive</em> — responsive, trustworthy, respectful of the user's time.</p>
-            <p>The simplest path to performance is to ship less code. No framework runtime. No megabytes of JavaScript. Just semantic HTML, well-organized CSS, and the small amount of JS you actually need for interactivity. This isn't a compromise — it's a feature.</p>
-            <blockquote>The fastest code is the code you never ship.</blockquote>
-            <p>When you build with the platform, performance comes nearly for free. There's no hydration step, no client-side rendering delay, no layout shift from JavaScript-injected content. The HTML arrives, the CSS paints, and the page is ready. It's the way the web was designed to work.</p>
-
-            <h2 id="looking-ahead">Looking Ahead</h2>
-            <p>The next decade of web development will be defined by a return to simplicity — not the simplicity of limitation, but the simplicity of maturity. The platform is powerful. The tooling is intelligent. The patterns are proven.</p>
-            <p>Here's what I expect to see more of:</p>
-            <ol>
-              <li><strong>Token-based design systems</strong> as the default architecture for any site larger than a single page</li>
-              <li><strong>AI-assisted development</strong> that handles implementation while humans focus on architecture and taste</li>
-              <li><strong>Platform-first approaches</strong> where HTML, CSS, and JS are the starting point rather than the escape hatch</li>
-              <li><strong>Performance budgets</strong> treated with the same seriousness as feature requirements</li>
-              <li><strong>Visual editing</strong> that works on real pages with real stylesheets rather than in walled-garden builders</li>
-            </ol>
-            <p>The web is still the most accessible, most open, most democratic platform for publishing ideas and building tools. The best thing we can do for it is build with care — using the simplest tools that get the job done, maintaining high standards for quality, and always keeping the end user in mind.</p>
-
-            <hr>
-
-            <p><em>Thanks for reading. If this resonated, share it with a friend or <a href="contact.html">get in touch</a> — I'd love to hear your thoughts on where the web is headed.</em></p>
-          </div>
-
-          <!-- Tags -->
-          <div class="flex flex-wrap gap-2 mt-8 pt-8 border-t">
-            <a href="#" class="tag">Web Development</a>
-            <a href="#" class="tag">Design Systems</a>
-            <a href="#" class="tag">AI</a>
-            <a href="#" class="tag">Performance</a>
-            <a href="#" class="tag">CSS</a>
-          </div>
-
-          <!-- Author Bio -->
-          <div class="bg-muted rounded-lg p-6 mt-8">
-            <div class="author-block">
-              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Alex Rivera" class="avatar avatar-lg" loading="lazy">
-              <div class="author-block__info">
-                <span class="author-block__name text-base">Alex Rivera</span>
-                <span class="author-block__detail">Senior developer and writer focused on design systems, web performance, and the future of creative tooling. Based in San Francisco.</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Bottom Share -->
-          <div class="flex items-center justify-between mt-8 py-4 border-t border-b">
-            <span class="text-sm text-muted-foreground font-medium">Enjoyed this? Share it</span>
-            <div class="social-share">
-              <a href="#" class="social-share__btn" aria-label="Share on Twitter">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-              </a>
-              <a href="#" class="social-share__btn" aria-label="Share on LinkedIn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-              </a>
-              <button class="social-share__btn" aria-label="Copy link" type="button" onclick="navigator.clipboard&&navigator.clipboard.writeText(location.href)">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-              </button>
-            </div>
-          </div>
-        </article>
+      <div class="container-wide pb-12">
+        <figure class="post-media" aria-label="Abstract editorial system illustration">
+          <svg viewBox="0 0 1200 700" role="img" aria-labelledby="featured-image-title featured-image-desc">
+            <title id="featured-image-title">Abstract editorial layout</title>
+            <desc id="featured-image-desc">Layered circles, lines, and panels suggesting a flexible article design system.</desc>
+            <rect width="1200" height="700" fill="currentColor" opacity=".05"></rect>
+            <circle cx="930" cy="170" r="210" fill="currentColor" opacity=".12"></circle>
+            <circle cx="230" cy="520" r="140" fill="currentColor" opacity=".10"></circle>
+            <rect x="130" y="120" width="440" height="80" rx="24" fill="currentColor" opacity=".16"></rect>
+            <rect x="130" y="240" width="700" height="28" rx="14" fill="currentColor" opacity=".18"></rect>
+            <rect x="130" y="300" width="610" height="28" rx="14" fill="currentColor" opacity=".14"></rect>
+            <rect x="130" y="360" width="760" height="28" rx="14" fill="currentColor" opacity=".14"></rect>
+            <path d="M170 560 C340 300 520 640 720 360 S1030 330 1090 190" stroke="currentColor" stroke-width="38" fill="none" opacity=".24"></path>
+          </svg>
+        </figure>
       </div>
-    </section>
 
-    <!-- ==================================================================
-         RELATED POSTS
-         ================================================================== -->
-    <section class="section py-12 lg:py-16">
+      <div class="container article-layout">
+        <aside class="toc" aria-labelledby="toc-title">
+          <h2 class="toc__title" id="toc-title">On this page</h2>
+          <ol class="toc__list">
+            <li><a class="toc__link" href="#reader-first" data-toc-link>Begin with the reader</a></li>
+            <li><a class="toc__link" href="#useful-constraints" data-toc-link>Useful constraints</a></li>
+            <li><a class="toc__link" href="#modular-sections" data-toc-link>Modular sections</a></li>
+            <li><a class="toc__link" href="#production-rhythm" data-toc-link>Production rhythm</a></li>
+            <li><a class="toc__link" href="#final-notes" data-toc-link>Final notes</a></li>
+          </ol>
+        </aside>
+
+        <div>
+          <div class="prose">
+            <p>
+              The best publishing systems do not announce themselves. They create just enough structure for writers,
+              editors, and designers to move quickly, then step back so the reader can focus on the idea. When a system
+              is too rigid, every article begins to feel like a template. When it is too loose, every launch requires a
+              new round of decisions.
+            </p>
+
+            <p>
+              Editorial rhythm sits in the space between those extremes. It is the cadence of titles, metadata, images,
+              pull quotes, lists, related links, and quiet pauses. A good design system protects that rhythm while giving
+              authors practical ways to vary the page.
+            </p>
+
+            <h2 id="reader-first">Begin with the reader</h2>
+            <p>
+              Long-form pages succeed when the first screen answers three questions quickly: where am I, why should I
+              care, and how demanding will this be? A clear headline, a focused summary, and honest reading metadata
+              reduce the work required to begin.
+            </p>
+
+            <p>
+              This is why article templates should avoid decorative clutter around the opening. The lead should be
+              readable before it is impressive. The featured image should add context, not compete with the title. The
+              author line should establish trust without becoming the loudest element on the page.
+            </p>
+
+            <blockquote>
+              Templates are most valuable when they protect quality while leaving room for judgment.
+            </blockquote>
+
+            <h2 id="useful-constraints">Useful constraints</h2>
+            <p>
+              Constraints are not a lack of creativity. They are agreements that prevent a team from solving the same
+              problem every week. The trick is choosing constraints that improve the reader experience instead of merely
+              simplifying production.
+            </p>
+
+            <ul>
+              <li>Use a narrow measure for body copy so long paragraphs remain comfortable.</li>
+              <li>Keep metadata visually secondary but consistently placed.</li>
+              <li>Reserve strong color for interactive states, labels, and moments of emphasis.</li>
+              <li>Make images, lists, code, and quotes feel native to the same article system.</li>
+            </ul>
+
+            <p>
+              A class like <code>prose</code> is a practical constraint. It gives CMS-rendered content a dependable
+              typographic baseline: spacing, headings, lists, links, quotes, and inline code are all handled by the
+              system rather than by one-off page decisions.
+            </p>
+
+            <h2 id="modular-sections">Modular sections</h2>
+            <p>
+              Most publications need more than one article shape. A reported feature may need a large image and several
+              pull quotes. A tactical guide may need tables, lists, and related resources. A short opinion piece may
+              need little more than a strong title and a clean column.
+            </p>
+
+            <p>
+              The answer is not a new template for every scenario. It is a set of modular sections that can be assembled
+              in different orders. A featured post block, a latest posts grid, a newsletter callout, and a contact section
+              should all feel related without being visually identical.
+            </p>
+
+            <h3>What belongs in the system?</h3>
+            <ol>
+              <li>Components that repeat across pages, such as cards, badges, buttons, forms, and navigation.</li>
+              <li>Sections authors can insert without additional design work.</li>
+              <li>Utility classes for spacing, layout, color, and responsive adjustments.</li>
+            </ol>
+
+            <p>
+              This balance lets teams move quickly. Designers keep the system coherent. Editors get predictable building
+              blocks. Developers avoid the slow accumulation of page-specific CSS.
+            </p>
+
+            <h2 id="production-rhythm">Production rhythm</h2>
+            <p>
+              Publishing has a rhythm of its own: pitch, outline, draft, edit, package, schedule, distribute, learn.
+              Design systems can support that rhythm by making the packaging step less fragile. When a story is ready,
+              the team should not have to debate button styles, card spacing, or image radius.
+            </p>
+
+            <p>
+              Fast production also depends on confidence. Accessible defaults, semantic HTML, visible focus states, and
+              durable responsive behavior mean fewer surprises at the end of the process. Performance improves too,
+              because a constrained system tends to ship less CSS and fewer dependencies.
+            </p>
+
+            <h2 id="final-notes">Final notes</h2>
+            <p>
+              A respectful editorial system is quiet, but not generic. It offers enough structure to make every article
+              feel intentional and enough flexibility to let each story find its own pace. The result is a site that feels
+              faster, calmer, and more trustworthy — not because it has fewer ideas, but because it gives each idea room.
+            </p>
+          </div>
+
+          <div class="share mt-12" aria-label="Share this article">
+            <span class="share__label">Share this article</span>
+            <button class="btn btn-outline" type="button" data-share="native">Share</button>
+            <button class="btn btn-outline" type="button" data-share="x">X</button>
+            <button class="btn btn-outline" type="button" data-share="linkedin">LinkedIn</button>
+            <button class="btn btn-outline" type="button" data-share="copy">Copy link</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <section class="section bg-muted" aria-labelledby="related-title">
       <div class="container">
-        <div class="related-posts">
-          <div class="section-header">
-            <h2 class="section-header__title">Related Articles</h2>
-            <p class="section-header__description">More reading you might enjoy.</p>
-          </div>
-          <div class="post-grid">
-            <a href="post.html" class="card card--link">
-              <img class="card__image" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=340&fit=crop" alt="Laptop open on a wooden desk with a cup of coffee nearby" loading="lazy">
-              <div class="card__body">
-                <div class="mb-2"><span class="badge badge-primary">Design</span></div>
-                <h3 class="card__title">Building Better User Interfaces</h3>
-                <p class="card__excerpt">Learn the principles behind intuitive, accessible interfaces that users actually enjoy using every day.</p>
+        <div class="section-heading">
+          <span class="section-heading__eyebrow">Related posts</span>
+          <h2 id="related-title">Keep reading</h2>
+          <p class="section-heading__lead">
+            More essays about the craft and systems behind modern digital publishing.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3">
+          <article class="post-card">
+            <div class="post-card__media" aria-hidden="true">
+              <svg viewBox="0 0 800 500" role="img" aria-label="Abstract performance illustration">
+                <rect width="800" height="500" fill="currentColor" opacity=".06"></rect>
+                <path d="M100 330h600M100 250h480M100 170h560" stroke="currentColor" stroke-width="26" opacity=".20"></path>
+                <circle cx="610" cy="150" r="90" fill="currentColor" opacity=".12"></circle>
+              </svg>
+            </div>
+            <div class="post-card__body">
+              <div class="post-meta">
+                <span>Performance</span>
+                <span aria-hidden="true">·</span>
+                <span>4 min read</span>
               </div>
-              <div class="card__footer">
-                <span class="card__meta">Mar 15, 2025</span>
-                <span class="card__meta">5 min read</span>
+              <h3><a href="post.html">Fast pages begin with fewer decisions</a></h3>
+              <p class="text-muted-foreground">Why constrained systems often produce faster, more resilient websites.</p>
+              <a class="cta-link" href="post.html">Read more →</a>
+            </div>
+          </article>
+
+          <article class="post-card">
+            <div class="post-card__media" aria-hidden="true">
+              <svg viewBox="0 0 800 500" role="img" aria-label="Abstract typography illustration">
+                <rect width="800" height="500" fill="currentColor" opacity=".06"></rect>
+                <circle cx="600" cy="250" r="170" fill="currentColor" opacity=".13"></circle>
+                <path d="M130 150h330M130 220h540M130 290h390M130 360h470" stroke="currentColor" stroke-width="19" opacity=".22"></path>
+              </svg>
+            </div>
+            <div class="post-card__body">
+              <div class="post-meta">
+                <span>Typography</span>
+                <span aria-hidden="true">·</span>
+                <span>7 min read</span>
               </div>
-            </a>
-            <a href="post.html" class="card card--link">
-              <img class="card__image" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=340&fit=crop" alt="Close-up of JavaScript code on a screen" loading="lazy">
-              <div class="card__body">
-                <div class="mb-2"><span class="badge badge-secondary">Development</span></div>
-                <h3 class="card__title">CSS Custom Properties Deep Dive</h3>
-                <p class="card__excerpt">How to architect a token-based styling system using nothing but native CSS variables and semantic naming.</p>
+              <h3><a href="post.html">The quiet power of a readable measure</a></h3>
+              <p class="text-muted-foreground">Line length, rhythm, and contrast choices that make long reads feel lighter.</p>
+              <a class="cta-link" href="post.html">Read more →</a>
+            </div>
+          </article>
+
+          <article class="post-card">
+            <div class="post-card__media" aria-hidden="true">
+              <svg viewBox="0 0 800 500" role="img" aria-label="Abstract accessibility illustration">
+                <rect width="800" height="500" fill="currentColor" opacity=".06"></rect>
+                <circle cx="400" cy="250" r="155" fill="currentColor" opacity=".12"></circle>
+                <path d="M230 250h340M400 80v340" stroke="currentColor" stroke-width="24" opacity=".22"></path>
+              </svg>
+            </div>
+            <div class="post-card__body">
+              <div class="post-meta">
+                <span>Accessibility</span>
+                <span aria-hidden="true">·</span>
+                <span>5 min read</span>
               </div>
-              <div class="card__footer">
-                <span class="card__meta">Mar 10, 2025</span>
-                <span class="card__meta">7 min read</span>
-              </div>
-            </a>
-            <a href="post.html" class="card card--link">
-              <img class="card__image" src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=600&h=340&fit=crop" alt="Design wireframes spread across a table" loading="lazy">
-              <div class="card__body">
-                <div class="mb-2"><span class="badge badge-secondary">Design Systems</span></div>
-                <h3 class="card__title">Tokens, Components, Sections</h3>
-                <p class="card__excerpt">A practical guide to structuring a design system that scales from a single page to an entire product.</p>
-              </div>
-              <div class="card__footer">
-                <span class="card__meta">Feb 22, 2025</span>
-                <span class="card__meta">9 min read</span>
-              </div>
-            </a>
-          </div>
+              <h3><a href="post.html">Accessible defaults are editorial defaults</a></h3>
+              <p class="text-muted-foreground">How semantic structure and readable states protect every reader's experience.</p>
+              <a class="cta-link" href="post.html">Read more →</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ==================================================================
-         NEWSLETTER CTA
-         ================================================================== -->
-    <section class="section py-12 lg:py-16">
-      <div class="container">
-        <div class="cta-block">
-          <h2 class="cta-block__title">Stay in the loop</h2>
-          <p class="cta-block__description">Get the latest articles delivered straight to your inbox. No spam, unsubscribe anytime.</p>
-          <form class="cta-block__form" id="newsletter-form" action="#newsletter" method="post">
-            <input type="email" class="input" placeholder="you@example.com" aria-label="Email address" required>
-            <button type="submit" class="btn btn-primary">Subscribe</button>
-          </form>
+    <section class="section" aria-labelledby="cta-title">
+      <div class="container cta">
+        <div class="grid md:grid-cols-2 items-center gap-8">
+          <div class="stack">
+            <span class="badge">Have an idea?</span>
+            <h2 id="cta-title">Pitch a practical essay for Minimal.</h2>
+            <p>
+              We publish clear, useful writing about design systems, editorial operations, performance, and thoughtful product craft.
+            </p>
+          </div>
+          <div class="cluster justify-start">
+            <a class="btn btn-primary btn-lg" href="contact.html">Contact the editor</a>
+            <a class="btn btn-outline btn-lg" href="index.html">Back to home</a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ====================================================================
-       FOOTER
-       ==================================================================== -->
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a href="index.html" class="brand">
-            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-            Inkwell
-          </a>
-          <p class="footer-brand__description">A blog about design, development, and the craft of building thoughtful digital experiences.</p>
-        </div>
-        <div>
-          <h4 class="footer-column__title">Pages</h4>
-          <ul class="footer-column__list">
-            <li><a href="index.html" class="footer-link">Home</a></li>
-            <li><a href="post.html" class="footer-link">Blog</a></li>
-            <li><a href="contact.html" class="footer-link">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="footer-column__title">Connect</h4>
-          <ul class="footer-column__list">
-            <li><a href="#" class="footer-link">Twitter</a></li>
-            <li><a href="#" class="footer-link">GitHub</a></li>
-            <li><a href="#" class="footer-link">LinkedIn</a></li>
-          </ul>
-        </div>
+    <div class="container site-footer__inner">
+      <div class="stack">
+        <a class="brand" href="index.html">
+          <span class="brand__mark" aria-hidden="true">M</span>
+          <span>Minimal</span>
+        </a>
+        <p>A minimalist publication about design systems, writing, and thoughtful web craft.</p>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; 2025 Inkwell. All rights reserved.</span>
-        <div class="footer-socials">
-          <a href="#" class="footer-social-link" aria-label="Twitter">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-          </a>
-          <a href="#" class="footer-social-link" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          </a>
-          <a href="#" class="footer-social-link" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-        </div>
+      <div class="stack">
+        <h2 class="text-base">Explore</h2>
+        <a class="footer-link" href="index.html">Home</a>
+        <a class="footer-link" href="post.html">Featured Post</a>
+        <a class="footer-link" href="contact.html">Contact</a>
+      </div>
+      <div class="stack">
+        <h2 class="text-base">Topics</h2>
+        <a class="footer-link" href="post.html">Design Systems</a>
+        <a class="footer-link" href="post.html">Typography</a>
+        <a class="footer-link" href="post.html">Performance</a>
+      </div>
+      <div class="stack">
+        <h2 class="text-base">Connect</h2>
+        <a class="footer-link" href="contact.html">Pitch a story</a>
+        <a class="footer-link" href="contact.html">Contact the editor</a>
       </div>
     </div>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
